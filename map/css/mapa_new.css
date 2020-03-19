@@ -1,0 +1,426 @@
+/* Author(s) = Yao Li (mgzjys@gmail.com)
+ * Date: 2020 March
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+
+  display: block;
+}
+
+body {
+  position: absolute;
+  left: 50%;
+  top: 1%;
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none;
+}
+
+table {
+
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+b {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  overflow: hidden; /* Hide scrollbars */
+  color: #777;
+}
+
+#wrapper {
+  width: 1200px;
+  font-size: 1em;
+  margin: 10px;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: left;
+  width: 150px;
+  height: auto;
+  background: white;
+  border: 1px solid #ddd;
+  pointer-events: none;
+  font: 15px sans-serif;
+  z-index: 2;
+  padding: 10px;
+  opacity: 0;
+  line-height: 18px;
+}
+
+#mapa svg:active {
+
+  cursor: move;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.path:hover {
+  cursor: pointer;
+}
+
+#mapa svg:active {
+  cursor: move;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+#countyData {
+  float: left;
+  width: 200px;
+
+  pointer-events: none;
+}
+
+#countySlider {
+  float: left;
+  margin-top: 30px;
+  height: 65px;
+  width: 600px;
+}
+
+.axis {
+  fill: rgba(172, 172, 172, 1);
+}
+
+.slideraxis {
+  fill: #bbb;
+}
+
+path.cursor {
+  fill: #a50f15;
+}
+
+#monthday {
+  font-size: 20px;
+  float: left;
+  height: 100;
+  width: 300px;
+  padding-top: 10px;
+  border-bottom: #777 1px solid;
+
+}
+
+#maptitle {
+  font-family: "Verdana", Helvetica, Arial, sans-serif;
+  padding-top: 20px;
+  margin-bottom: -30px;
+  margin-left: 500px;
+  font-size: 36px;
+
+}
+
+
+#year {
+  float: left;
+  font-size: 36px;
+  padding-bottom: 20px;
+  width: 300px;
+}
+
+
+
+#maxSum {
+
+  float: left;
+  width: 210;
+/*  margin-top: 10px;*/
+  padding-bottom: 5px;
+
+}
+
+#totalcasenumber {
+  margin-top: 20px;
+  float: left;
+  width: 300px;
+  font-size: 20px;
+}
+
+.totalnumber {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: solid 1px #777;
+  width: 300px;
+}
+
+#maxcountynum {
+  font-size: 20px;
+  padding-top: 20px;
+  float: right;
+  font-weight: bold;
+}
+
+#posicountynum {
+  margin-top: 20px;
+  float: right;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.icono {
+  float: left;
+  width: 300px;
+
+}
+
+.iconoMaximo {
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin: 20px 30px 0 0;
+  background: url(../../img/iconos.png)-99px 100px;
+}
+
+.iconoMinimo {
+  height: 30px;
+  width: 30px;
+  background: url(../../img/iconos.png)-178px 100px;
+  float: left;
+  margin: 20px 30px 0 0;
+}
+
+.mano {
+  margin: 10px 5px 0 0;
+  width: 40px;
+  height: 50px;
+  background: url(../../img/iconos.png)-250px 100px;
+  float: left;
+}
+
+#slider {
+
+  float: left;
+  width: 600px;
+  height: 45px;
+}
+
+.inicio {
+  padding-left: 4px;
+  float: left;
+  font-size: 0.8em;
+}
+
+.final {
+  padding-right: 23px;
+  float: right;
+  font-size: 0.8em;
+}
+
+#legend_c {
+  display: inline-block;
+  width: 300px;
+  height: 40px;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 10px 10px 10px 0;
+  margin-top: -60px;
+  pointer-events: none;
+}
+
+.key {
+  float: left;
+  width: 60px;
+  height: 20px;
+}
+
+.key:last-child {
+
+  border-right: none;
+}
+
+.masCinco,
+.masQuince,
+.masVeinticinco,
+.masTreintaYCinco,
+.masCuarenta {
+  height: 10px;
+}
+
+
+.masCinco .color {
+  background-color: #fee5d9;
+}
+
+.masQuince .color {
+  background-color: #fcae91;
+}
+
+.masVeinticinco .color {
+  background-color: #fb6a4a;
+}
+
+.masTreintaYCinco .color {
+  background-color: #de2d26;
+}
+
+.masCuarenta .color {
+  background-color: #a50f15;
+}
+
+
+
+.textoLeyenda {
+  height: 10px;
+  width: 70px;
+  float: left;
+}
+
+.textoLeyenda span {
+  position: relative;
+  left: 0px;
+  text-align: center;
+  top: 25px;
+}
+
+//fin estilos leyenda
+.move:hover {
+  cursor: pointer;
+}
+
+#dataMap {
+  float: left;
+  width: 1100px;
+  height: 520px;
+}
+
+#mapas {
+  float: left;
+  width: 900px;
+  height: 520px;
+}
+
+
+
+#canarias {
+  //float: right;
+  height: 100px;
+  width: 240px;
+  top: -115px;
+  left: 360px;
+  position: relative;
+  border-top: solid 1px graytext;
+  border-left: solid 1px graytext;
+  border-radius: 30px 0;
+}

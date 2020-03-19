@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="../lib/d3/d3.js" type="text/javascript"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <link href="css/mapa_new.css" rel="stylesheet" type="text/css" />
+    <title>US Covid-19 County Map</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="dataMap">
+        <div id="maptitle"></div>
+        <div id="countyData">
+          <div id="tasa-parados">
+            <div id="year"></div>
+            <div id="monthday"></div>
+          </div>
+          <div id="maxSum">
+            <div id="totalcasenumber"></div>
+            <div class="totalnumber">Total cases</div>
+            <div class="icono">
+              <div id="maxcountynum"></div>
+            </div>
+            <div class="icono">
+              <div id="posicountynum"></div>
+
+            </div>
+          </div>
+        </div>
+        <div id="mapas">
+          <div id="mapa"></div>
+        </div>
+        <div id="legend_c">
+          <div class="key">
+            <div class="masCinco">
+              <div class="textoLeyenda color"><span>Not reported</span></div>
+            </div>
+          </div>
+          <div class="key">
+            <div class="masQuince">
+              <div class="textoLeyenda color"><span>1-5</span></div>
+            </div>
+          </div>
+          <div class="key">
+            <div class="masVeinticinco">
+              <div class="textoLeyenda color"><span>6-10</span></div>
+            </div>
+          </div>
+          <div class="key">
+            <div class="masTreintaYCinco">
+              <div class="textoLeyenda color"><span>11-50</span></div>
+            </div>
+          </div>
+          <div class="key">
+            <div class="masCuarenta">
+              <div class="textoLeyenda color"><span>>100</span></div>
+            </div>
+          </div>
+          <!--
+            <div class="k"><div class="color" style="background: rgb(255, 231, 235);"></div><div class="text"><span>2%</span></div></div>
+          -->
+        </div>
+      </div>
+      <div id="countySlider">
+        <div id="slider"></div>
+        <div class="inicio">2020-01-21</div>
+        <div class="final">2020-03-17</div>
+      </div>
+      <script src="mapa_simplyfied.js" type="text/javascript"></script>
+    </div>
+  </body>
+</html>
