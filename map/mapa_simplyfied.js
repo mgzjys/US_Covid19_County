@@ -1,5 +1,5 @@
-/* Author(s) = Manuel Maroto (@manuelgmaroto), Luis Sevillano (@SepirData)
- * Date: 2014 Oct
+/* Author(s) = Yao Li
+ * Date: 2020 March
  */
 var trimestres = new Array(
   "2020-01-21",
