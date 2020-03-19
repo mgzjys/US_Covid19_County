@@ -107,7 +107,7 @@ section {
 }
 
 body {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 1%;
   line-height: 1;
