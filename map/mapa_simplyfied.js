@@ -111,7 +111,7 @@ var map = d3
 //  .append("svg")
 //  .attr("width", wCan)
 //  .attr("height", hCan);
-d3.select("#maptitle").html("US Covid-19 Cases");
+d3.select("#maptitle").html("US Covid-19 County Dynamics");
 
 d3.select("#year").html(timearry[timearry.length - 1].substring(0, 4));
 d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
