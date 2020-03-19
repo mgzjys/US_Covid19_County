@@ -200,7 +200,7 @@ d3.csv("../data/maybe.csv", function(data) {
         .append("g")
         .attr("class", "move")
         .append("svg")
-        .attr("x", 880)
+        .attr("x", 885)
         .attr("y", 7)
         .attr("width", 15)
         .attr("height", 60);
