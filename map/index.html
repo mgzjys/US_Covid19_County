@@ -4,18 +4,45 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="../lib/d3/d3.js" type="text/javascript"></script>
+    <script>
+    d3versionV1= d3
+    window.d3 = null
+    </script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+    d3versionV3= d3
+    window.d3 = null
+    // test it worked
+    console.log('v1', d3versionV1.version)
+    console.log('v3', d3versionV3.version)
+    </script>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>
-    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
     <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script>
+//    window.d3 = null
+    </script>
     <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script>
+    d3versionGeo= d3
+    window.d3 = null
+    </script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+
     <link href="css/mapa_new.css" rel="stylesheet" type="text/css" />
     <title>US Covid-19 County Map</title>
   </head>
   <body>
     <div id="wrapper">
+      <div id="block_container">
+        <div id="datainfor"></div>
+        <div id="creditinfor"></div>
+    </div>
       <div id="dataMap">
         <div id="maptitle"></div>
+        <div id="mapsubtitle"></div>
         <div id="countyData">
           <div id="tasa-parados">
             <div id="year"></div>
