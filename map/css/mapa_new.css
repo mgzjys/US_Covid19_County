@@ -257,7 +257,7 @@ path.cursor {
 {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 7px;
+  font-size: 9px;
    display:inline-table;
 }
 
@@ -265,10 +265,27 @@ path.cursor {
 {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 7px;
+  font-size: 9px;
  display:inline-table;
 
 }
+
+#contributions
+{
+  font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
+  float: right;
+  font-size: 9px;
+  display:inline-table;
+}
+
+#datasource
+{
+  font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
+  float: left;
+  font-size: 9px;
+  display:inline-table;
+}
+
 
 /*  padding-top: 20px;
   margin-bottom: -15px;

@@ -176,6 +176,12 @@ d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
 d3.select("#datainfor").html("Data updated time: 2020-03-17");
 
+d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
+
+d3.select("#datasource").html("Data source: 1Point3Acres");
+
+
+
 
 
 d3.select("#year").html(timearry[timearry.length - 1].substring(0, 4));
