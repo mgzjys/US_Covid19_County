@@ -257,7 +257,7 @@ path.cursor {
 {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 3px;
+  font-size: 7px;
    display:inline-table;
 }
 
@@ -265,7 +265,7 @@ path.cursor {
 {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 3px;
+  font-size: 7px;
  display:inline-table;
 
 }
