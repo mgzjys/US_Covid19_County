@@ -148,6 +148,21 @@ body {
   color: #777;
 }
 
+@font-face {
+    font-family: 'Optima';
+    src: url('fonts/Optima Medium.eot'), url('fonts/Optima Medium.ttf') format('truetype'), url('fonts/Optima Medium.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Copperplate';
+    src: url('fonts/OPTICopperplate-Heavy.eot'), url('fonts/OPTICopperplate-Heavy.ttf') format('truetype'), url('fonts/OPTICopperplate-Heavy.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 #wrapper {
   width: 1200px;
   font-size: 1em;
