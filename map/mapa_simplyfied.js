@@ -421,7 +421,7 @@ d3.csv("../data/maybe.csv", function(data) {
       }
       max_sum[0] = posicounty;
 
-      countyPoNum = ['  counties in the US has positive cases as of the date of the map'];
+      countyPoNum = ['  counties in the US has positive cases as of the date of the map.'];
       var nombretotalcasenumber = d3
         .select("#totalcasenumber")
         .html(addComas(tatalcaseNum));
@@ -431,7 +431,7 @@ d3.csv("../data/maybe.csv", function(data) {
           //  addComas(max_sum[1]) +
           "<br>" +
           "<span id='county'>" +
-          countyMax + "  has the most postive cases in the US as of the date of the map, which is  " + max_sum[1] +
+          countyMax + "  has the most postive cases in the US as of the date of the map, which is  " + max_sum[1] + "." +
           "</span>"
         );
       var nombrecountyPoNum = d3
