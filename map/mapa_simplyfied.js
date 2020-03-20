@@ -58,7 +58,9 @@ var timearry = new Array(
   "2020-03-14",
   "2020-03-15",
   "2020-03-16",
-  "2020-03-17"
+  "2020-03-17",
+  "2020-03-18",
+  "2020-03-19"
 );
 //var zoomSettings = {
 //  duration: 1000,
@@ -174,7 +176,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-17");
+d3.select("#datainfor").html("Data updated time: 2020-03-19");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -193,8 +195,8 @@ var height = 330,
 var aux = timearry.length - 1;
 var width_slider = 1200;
 var height_slider = 50;
-d3.csv("../data/maybe.csv", function(data) {
-  d3.json("../data/maybe_geo.json", function(json) {
+d3.csv("../data/Data_0319.csv", function(data) {
+  d3.json("../data/Data_0319.json", function(json) {
     /* ------SLIDER----- */
     var svg = d3
       .select("#slider")
@@ -206,7 +208,7 @@ d3.csv("../data/maybe.csv", function(data) {
     var axisyears = [
       //        parseFloat(timearry[0].substring(6)),
       //        parseFloat(timearry[timearry.length - 1].substring(6))
-      1, 57
+      1, 59
     ];
 
     var pointerdata = [{
