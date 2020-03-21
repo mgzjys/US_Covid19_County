@@ -429,7 +429,7 @@ d3.csv("../data/Data_0319.csv", function(data) {
       }
       max_sum[0] = posicounty;
 
-      countyPoNum = ['  counties in the US has positive cases as of the date of the map.'];
+      countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
       var nombretotalcasenumber = d3
         .select("#totalcasenumber")
         .html(addComas(tatalcaseNum));
