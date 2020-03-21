@@ -353,7 +353,7 @@ d3.csv("../data/Data_0321.csv", function(data) {
       div.style("opacity", 0.9);
       div.html(
         "<b>" +
-        d.properties.NAME +
+        d.properties.NAME + ", " + d.properties.StateAbbri+
         "</b></br>Positve cases: <b>" +
         addComas(data[d.properties.ID][timearry[aux]]) +
         "</b></br>FIPS: " +
