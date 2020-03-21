@@ -107,10 +107,12 @@ section {
 }
 
 body {
-  position:relative;
+  /*position:relative;
   left: 5%;
   top: 50%;
-  line-height: 1;
+  line-height: 1;*/
+  max-width: 1200px;
+   margin: auto;
 }
 
 ol,
@@ -395,7 +397,7 @@ path.cursor {
   font-size: 0.9em;
   text-align: center;
   padding: 10px 10px 10px 0;
-  margin-bottom: -160px;
+  margin-bottom: -100px;
   pointer-events: none;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
