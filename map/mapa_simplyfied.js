@@ -418,9 +418,13 @@ d3.csv("../data/Data_0319.csv", function(data) {
       var countyPoNum;
       var tatalcaseNum = 0;
       var posicounty = 0;
+      var seriouscounty = 0;
       for (var j = 0; j < data.length; j++) {
         if (parseFloat(datos[j]) > 0) {
           posicounty = posicounty + 1;
+        }
+        if (parseFloat(datos[j]) > 100) {
+          seriouscounty = seriouscounty + 1;
         }
         if (max_sum[1] == parseFloat(datos[j])) {
           countyMax = county[j];
@@ -428,6 +432,7 @@ d3.csv("../data/Data_0319.csv", function(data) {
         tatalcaseNum = tatalcaseNum + parseFloat(datos[j]);
       }
       max_sum[0] = posicounty;
+      countyMax = seriouscounty;
 
       countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
       var nombretotalcasenumber = d3
@@ -439,7 +444,7 @@ d3.csv("../data/Data_0319.csv", function(data) {
           //  addComas(max_sum[1]) +
           "<br>" +
           "<span id='county'>" +
-          countyMax + "  has the most positive cases in the US as of the date of the map, which is  " + max_sum[1] + "." +
+          countyMax + "  counties in the US have more than 100 positive cases as of the date of the map." +
           "</span>"
         );
       var nombrecountyPoNum = d3
