@@ -159,6 +159,36 @@ body {
 }
 
 
+
+
+
+object
+{
+  float: right;
+  width: 900px;
+  height: 300px;
+  position: absolute;
+  margin-top: 10px;
+}
+
+.underlay
+{
+  float: right;
+  width: 900px;
+  height: 300px;
+  position: absolute;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
 #wrapper {
   width: 1200px;
   font-size: 1em;
@@ -190,10 +220,8 @@ div.tooltip {
 .path:hover {
   cursor: pointer;
 }
-.path1:hover {
-  cursor: pointer;
-}
-#mapa svg:active {
+
+#mapa1 svg:active {
   cursor: move;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;

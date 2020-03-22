@@ -96,7 +96,7 @@ function click(d) {
     });
   d3 = d3versionV3;
   jsonOutside.transition()
-    .duration(1000)
+    .duration(900)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 0.3 / k + "px");
 
@@ -106,9 +106,9 @@ function click(d) {
     });
   d3 = d3versionV3;
   statesjson.transition()
-    .duration(1000)
+    .duration(900)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 3 / k + "px");
+    .style("stroke-width", 2 / k + "px");
 
 
 
@@ -140,11 +140,12 @@ var colores = ["#ececec", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"]
 
 
 function getColor(d) {
+  console.log(d);
   return d > 300 ?
     colores[4] :
-    d > 50 ?
+    d > 100 ?
     colores[3] :
-    d > 10 ?
+    d > 50 ?
     colores[2] :
     d > 0 ?
     colores[1] :
@@ -163,9 +164,21 @@ var centered;
 var projection = d3versionGeo.geoAlbersUsa()
   .scale(1000)
   .translate([480, 240]);
-var path = d3.geo.path().projection(projection);
-var path1 = d3.geo.path().projection(projection);
 
+var projection1 = d3versionGeo.geoAlbersUsa()
+  .scale(1000)
+  .translate([480, 240]);
+var path = d3.geo.path().projection(projection);
+var path1 = d3.geo.path().projection(projection1);
+
+var map1 = d3.select("#mapa1").append("svg")
+  .attr("width", wmap)
+  .attr("height", hmap);
+
+map1.append("rect")
+  .attr("class", "background")
+  .attr("width", wmap)
+  .attr("height", hmap);
 
 
 
@@ -178,8 +191,7 @@ var map = d3.select("#mapa").append("svg")
 map.append("rect")
   .attr("class", "background")
   .attr("width", wmap)
-  .attr("height", hmap)
-  .on("click", click);
+  .attr("height", hmap);
 
 
 
@@ -218,7 +230,7 @@ var height = 330,
 var aux = timearry.length - 1;
 var width_slider = 1200;
 var height_slider = 50;
-d3.json("../data/us_states.json", function(states_json) {
+d3.json("../data/states.json", function(states_json) {
   d3.csv("../data/Data_0321.csv", function(data) {
     d3.json("../data/Data_geo.json", function(json) {
       /* ------SLIDER----- */
@@ -338,7 +350,7 @@ d3.json("../data/us_states.json", function(states_json) {
       for (var i = 0; i < data.length; i++) {
         var codeState = data[i].ID;
         var dataValue = parseFloat(data[i][timearry[timearry.length - 1]]);
-        console.log(dataValue);
+        //    console.log(dataValue);
         for (var j = 0; j < json.features.length; j++) {
           var jsonState = json.features[j].properties.ID;
           if (codeState == jsonState) {
@@ -347,18 +359,7 @@ d3.json("../data/us_states.json", function(states_json) {
           }
         }
       }
-      var states = map
-          .selectAll("#mapa path")
-          .data(states_json.features)
-          .enter().append("path")
-          .attr("class", "path")
-          .attr("d", path1)
-          .style("fill", "none")
-          .attr("fill-opacity", "1")
-          .attr("stroke", "#000000")
-          .attr("stroke-width", "3")
-          .attr("stroke-opacity", "1")
-          .on("click", click);
+
 
       var cont = map
         .selectAll("#mapa path")
@@ -370,7 +371,7 @@ d3.json("../data/us_states.json", function(states_json) {
         .style("fill", function(d) {
           return getColor(d.properties.value);
         })
-        .attr("fill-opacity", "0.6")
+        .attr("fill-opacity", "0.75")
         .attr("stroke", "#A9A9A9")
         .attr("stroke-width", 0.3)
         .attr("stroke-opacity", "1")
@@ -380,9 +381,34 @@ d3.json("../data/us_states.json", function(states_json) {
         .on("mouseout", mouseout);
 
 
+      var states = map1
+        .selectAll("#mapa1 path")
+        .data(states_json.features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("fill-opacity", "0")
+        .style("fill", "none")
+        .attr("stroke", "#000000")
+        .attr("stroke-width", 2)
+        .attr("stroke-opacity", "1")
+        .on("click", click);
 
+  //    states.data(states_json.features)
+  //      .enter().append('text')
+  //      .text(function(d) {
+  //        return d.properties.STUSPS;
+  //      })
+  //      .attr("x", function(d) {
+  //        console.log(projection([d.properties.INTPTLAT, d.properties.INTPTLON])[0])
 
-
+  //        return  projection([d.properties.INTPTLAT, d.properties.INTPTLON])[0];
+  //      })
+  //      .attr("y", function(d) {
+  //        return  projection([d.properties.INTPTLAT, d.properties.INTPTLON])[1];
+  //      })
+  //      .style("fill", "#000000")
+  //      .style("font-size", "100px");
 
 
 
@@ -396,8 +422,8 @@ d3.json("../data/us_states.json", function(states_json) {
 
       function mouseover(d) {
         d3.select(this)
-          .attr("stroke-width", "1px")
-          .attr("fill-opacity", "0");
+          .attr("stroke-width", "1.5px")
+          .attr("fill-opacity", "1");
         div.style("opacity", 0.9);
         div.html(
           "<b>" +
@@ -448,7 +474,6 @@ d3.json("../data/us_states.json", function(states_json) {
             return "#ccc";
           }
         });
-        states.style("fill", "none");
         maxSum(data, index);
       }
       maxSum(data, aux);
@@ -465,7 +490,7 @@ d3.json("../data/us_states.json", function(states_json) {
           county.push(d[i].NAME);
         }
         var max_sum = d3.extent(datos);
-        console.log(max_sum);
+        //  console.log(max_sum);
         var countyMax;
         var countyPoNum;
         var tatalcaseNum = 0;
@@ -519,8 +544,8 @@ d3.json("../data/us_states.json", function(states_json) {
 
 d3.select("#wrapper").on("touchstart", function() {
   div
-    .transition()
-    .duration(100)
+    //    .transition()
+    //    .duration(100)
     .on("click", click)
     .style("opacity", 0);
 });
