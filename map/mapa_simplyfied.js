@@ -70,10 +70,10 @@ var timearry = new Array(
 //  zoomLevel: 5
 //};
 
-//0321:1782
+//0321:735
 var jsonOutside;
 var active;
-var unassigned= 1217;
+var unassigned= 725;
 
 function click(d) {
   var x, y, k;
