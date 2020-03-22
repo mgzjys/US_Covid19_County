@@ -212,7 +212,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-22 14:00AM EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-22 14:00 EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -501,7 +501,7 @@ d3.json("../data/states.json", function(states_json) {
           if (parseFloat(datos[j]) > 0) {
             posicounty = posicounty + 1;
           }
-          if (parseFloat(datos[j]) > 100) {
+          if (parseFloat(datos[j]) > 300) {
             seriouscounty = seriouscounty + 1;
           }
           if (max_sum[1] == parseFloat(datos[j])) {
@@ -526,7 +526,7 @@ d3.json("../data/states.json", function(states_json) {
             //  addComas(max_sum[1]) +
             "<br>" +
             "<span id='county'>" +
-            countyMax + "  counties in the US have more than 100 positive cases as of the date of the map." +
+            countyMax + "  counties in the US have more than 300 positive cases as of the date of the map." +
             "</span>"
           );
         var nombrecountyPoNum = d3
