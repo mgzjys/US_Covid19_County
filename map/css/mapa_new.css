@@ -190,7 +190,9 @@ div.tooltip {
 .path:hover {
   cursor: pointer;
 }
-
+.path1:hover {
+  cursor: pointer;
+}
 #mapa svg:active {
   cursor: move;
   cursor: -moz-grabbing;
@@ -220,6 +222,10 @@ div.tooltip {
 }
 
 path.cursor {
+  fill: #a50f15;
+}
+
+path1.cursor {
   fill: #a50f15;
 }
 
