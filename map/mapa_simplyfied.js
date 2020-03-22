@@ -96,7 +96,7 @@ function click(d) {
     });
   d3 = d3versionV3;
   jsonOutside.transition()
-    .duration(900)
+    .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 0.3 / k + "px");
 
@@ -106,7 +106,7 @@ function click(d) {
     });
   d3 = d3versionV3;
   statesjson.transition()
-    .duration(900)
+    .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 2 / k + "px");
 
