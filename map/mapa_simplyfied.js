@@ -69,9 +69,11 @@ var timearry = new Array(
 //  ease: d3.easeCubicOut,
 //  zoomLevel: 5
 //};
+
+//0321:1782
 var jsonOutside;
 var active;
-var unassigned= 2248;
+var unassigned= 1217;
 
 function click(d) {
   var x, y, k;
@@ -363,7 +365,7 @@ d3.csv("../data/Data_0321.csv", function(data) {
 
     function mouseout(d) {
       d3.select(this)
-        .attr("stroke-width", "0")
+        .attr("stroke-width", "1")
         .attr("fill-opacity", "1");
       div.style("opacity", 0);
     }
