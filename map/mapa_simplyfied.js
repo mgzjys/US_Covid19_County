@@ -448,7 +448,7 @@ d3.json("../data/us_states.json", function(states_json) {
             return "#ccc";
           }
         });
-        states.style("fill", "#A9A9A9");
+        states.style("fill", "none");
         maxSum(data, index);
       }
       maxSum(data, aux);
