@@ -354,7 +354,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .append("rect")
           .attr("class", "slideraxis")
           .attr("width", width_slider)
-          .attr("height", 6)
+          .attr("height", 5)
           .attr("x", 0)
           .attr("y", 16);
         var cursor = svg
@@ -363,8 +363,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .append("svg")
           .attr("x", 1180)
           .attr("y", 7)
-          .attr("width", 12)
-          .attr("height", 60);
+          .attr("width", 15)
+          .attr("height", 20);
 
         cursor.call(drag);
         var drawline = d3.svg

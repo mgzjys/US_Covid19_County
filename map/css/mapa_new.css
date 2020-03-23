@@ -285,9 +285,9 @@ div.tooltip {
 
 #countySlider {
   float: left;
-  margin-top: 120px;
-  margin-bottom: 20px;
-  height: 50px;
+  padding-top: 120px;
+  margin-bottom: 12px;
+  height: 36px;
   width: 1200px;
 }
 
@@ -371,7 +371,7 @@ path1.cursor {
   float: left;
   opacity: 0;
   font-size: 36px;
-  padding-top: 10px;
+  padding-top: 0px;
   width: 300px;
 }
 
@@ -380,7 +380,7 @@ path1.cursor {
   width: 210;
   height: 200px
     /*  margin-top: 10px;*/
-    padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 #totalcasenumber {
@@ -397,6 +397,14 @@ path1.cursor {
   width: 300px;
   font-size: 15px;
   font-weight: bold;
+  pointer-events: none;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
 }
 
 .totalnumber {
@@ -458,12 +466,15 @@ path1.cursor {
 
 .inicio {
   padding-left: 4px;
+  margin-top: 0px;
   float: left;
   font-size: 0.8em;
 }
 
 .final {
   padding-left: 10px;
+  padding-top: 0px;
+  height: 12px;
   float: right;
   font-size: 0.8em;
 }
@@ -556,7 +567,7 @@ path1.cursor {
 #mapas {
   float: right;
   /*  margin-left: 10px;*/
-  margin-top: 10px;
+  padding-top: 0px;
   width: 900px;
   height: 520px;
 }
