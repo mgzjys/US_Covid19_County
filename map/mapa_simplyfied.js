@@ -224,7 +224,7 @@ d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data co
 
 d3.select("#datasource").html("Data source: 1Point3Acres");
 
-d3.select("#legendname").html("Positve cases per 100,000 population");
+d3.select("#legendname").html("Positive cases per 100,000 population");
 
 d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view");
 
