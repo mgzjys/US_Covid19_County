@@ -249,12 +249,12 @@ object {
 div.tooltip {
   position: absolute;
   text-align: left;
-  width: 210px;
+  width: 216px;
   height: auto;
   background: white;
   border: 1px solid #ddd;
   pointer-events: none;
-  font: 15px sans-serif;
+  font: 12px sans-serif;
   z-index: 2;
   padding: 10px;
   opacity: 0;

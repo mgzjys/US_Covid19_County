@@ -491,13 +491,33 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             .attr("stroke-width", "1.5px")
             .attr("fill-opacity", "1");
           div.style("opacity", 0.9);
+
+          var raw_cases = 0;
+          var adjust_cases = 0;
+
+          if (parseInt(data[d.properties.ID][timearry[aux]] * scalefactor))
+          {
+            adjust_cases = parseInt(data[d.properties.ID][timearry[aux]] * scalefactor);
+          }
+          else {
+            adjust_cases = ["Not reported"];
+          }
+
+          if (parseInt(data_cases[d.properties.ID][timearry[aux]]))
+          {
+            raw_cases = parseInt(data_cases[d.properties.ID][timearry[aux]]);
+          }
+          else {
+            raw_cases = ["Not reported"];
+          }
+
           div.html(
             "<b>" +
             d.properties.NAME + ", " + d.properties.StateAbbri +
             "</b></br>Positive cases (per 10k): <b>" +
-            addComas(parseInt(data[d.properties.ID][timearry[aux]] * scalefactor)) +
+            adjust_cases +
             "</b></br>Raw counts:  <b>" +
-            addComas(parseInt(data_cases[d.properties.ID][timearry[aux]] * scalefactor))
+            raw_cases
           );
         }
 
@@ -537,7 +557,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (value) {
               return getColor(value);
             } else {
-              return "#ccc";
+              return "#ececec";
             }
           });
           maxSum(data_cases, index);
