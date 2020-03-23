@@ -112,7 +112,7 @@ function click(d) {
   statesjson.transition()
     .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 2 / k + "px");
+    .style("stroke-width", 1.5 / k + "px");
 
 
 
@@ -476,7 +476,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .attr("fill-opacity", "0")
           .style("fill", "none")
           .attr("stroke", "#000000")
-          .attr("stroke-width", 2)
+          .attr("stroke-width", 1.5)
           .attr("stroke-opacity", "1")
           .on("click", click);
 
