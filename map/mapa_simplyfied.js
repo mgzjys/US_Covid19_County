@@ -144,9 +144,9 @@ var colores = ["#ececec", "#abdda4", "#ffffbf", "#f4a582", "#ca0020"]
 
 function getColor(d) {
   //console.log(d);
-  return d > 100 ?
+  return d > 50 ?
     colores[4] :
-    d > 100 ?
+    d > 30 ?
     colores[3] :
     d > 10 ?
     colores[2] :
@@ -495,9 +495,9 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           var raw_cases = 0;
           var adjust_cases = 0;
 
-          if (parseInt(data[d.properties.ID][timearry[aux]] * scalefactor))
+          if (parseFloat(data[d.properties.ID][timearry[aux]] * scalefactor))
           {
-            adjust_cases = parseInt(data[d.properties.ID][timearry[aux]] * scalefactor);
+            adjust_cases = parseFloat(data[d.properties.ID][timearry[aux]] * scalefactor);
           }
           else {
             adjust_cases = ["Not reported"];
@@ -515,7 +515,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             "<b>" +
             d.properties.NAME + ", " + d.properties.StateAbbri +
             "</b></br>Positive cases (per 10k): <b>" +
-            adjust_cases +
+            adjust_cases.toFixed(2) +
             "</b></br>Raw counts:  <b>" +
             raw_cases
           );
