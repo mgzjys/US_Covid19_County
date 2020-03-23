@@ -514,7 +514,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           div.html(
             "<b>" +
             d.properties.NAME + ", " + d.properties.StateAbbri +
-            "</b></br>Positive cases (per 10k): <b>" +
+            "</b></br>Positive cases (per 100k): <b>" +
             adjust_cases +
             "</b></br>Raw counts:  <b>" +
             raw_cases
