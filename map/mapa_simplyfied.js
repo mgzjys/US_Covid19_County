@@ -148,7 +148,7 @@ function getColor(d) {
     colores[4] :
     d > 30 ?
     colores[3] :
-    d > 10 ?
+    d > 5 ?
     colores[2] :
     d > 0 ?
     colores[1] :
@@ -492,30 +492,30 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             .attr("fill-opacity", "1");
           div.style("opacity", 0.9);
 
-          var raw_cases = 0;
-          var adjust_cases = 0;
+          var raw_cases = data_cases[d.properties.ID][timearry[aux]]
+          var adjust_cases =0;
 
-          if (parseFloat(data[d.properties.ID][timearry[aux]] * scalefactor))
+          if (parseFloat(data[d.properties.ID][timearry[aux]]*scalefactor) <=0)
           {
-            adjust_cases = parseFloat(data[d.properties.ID][timearry[aux]] * scalefactor);
+            adjust_cases = "No data"
           }
-          else {
-            adjust_cases = ["Not reported"];
+          else
+          {
+            adjust_cases = parseFloat(data[d.properties.ID][timearry[aux]]*scalefactor).toFixed(2)// FIXME: :
+
           }
 
-          if (parseInt(data_cases[d.properties.ID][timearry[aux]]))
+          if (parseInt(data_cases[d.properties.ID][timearry[aux]])<=0)
           {
-            raw_cases = parseInt(data_cases[d.properties.ID][timearry[aux]]);
+            raw_cases = "No data"
           }
-          else {
-            raw_cases = ["Not reported"];
-          }
+
 
           div.html(
             "<b>" +
             d.properties.NAME + ", " + d.properties.StateAbbri +
             "</b></br>Positive cases (per 10k): <b>" +
-            adjust_cases.toFixed(2) +
+            adjust_cases +
             "</b></br>Raw counts:  <b>" +
             raw_cases
           );
@@ -550,12 +550,12 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             for (var i = 0; i < data.length; i++) {
               var codeState = data[i].ID;
               var dataValue = data[i][timearry[index]];
-              json.features[i].properties.value = dataValue * scalefactor;
+              json.features[i].properties.value = parseFloat(dataValue) * scalefactor;
 
             }
             var value = d.properties.value;
             if (value) {
-              return getColor(value);
+              return getColor(parseFloat(value));
             } else {
               return "#ececec";
             }
