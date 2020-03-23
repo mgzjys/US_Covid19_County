@@ -71,10 +71,12 @@ var timearry = new Array(
 //  zoomLevel: 5
 //};
 
-//0321:735 0322: 923
+//0321:735 0322: 604
 var jsonOutside;
 var active;
-var unassigned = 1848;
+var unassigned = 604;
+
+var scalefactor = 100000;
 
 function click(d) {
   var x, y, k;
@@ -137,16 +139,16 @@ function addComas(n) {
 
 //var colores = d3.schemeReds[5]
 
-var colores = ["#ececec", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"]
+var colores = ["#ececec", "#abdda4", "#ffffbf", "#f4a582", "#ca0020"]
 
 
 function getColor(d) {
-  console.log(d);
-  return d > 300 ?
+  //console.log(d);
+  return d > 100 ?
     colores[4] :
     d > 100 ?
     colores[3] :
-    d > 50 ?
+    d > 10 ?
     colores[2] :
     d > 0 ?
     colores[1] :
@@ -194,6 +196,10 @@ map.append("rect")
   .attr("width", wmap)
   .attr("height", hmap);
 
+var playButton = d3.select("#play-button");
+var moving = false;
+var autoplaystep = 0;
+
 
 
 //var projectionCan = d3.geo
@@ -212,11 +218,19 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-22 20:00 EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-23 03:00AM EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
 d3.select("#datasource").html("Data source: 1Point3Acres");
+
+d3.select("#legendname").html("Positve cases per 100,000 population");
+
+d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view");
+
+
+
+
 
 
 
@@ -231,314 +245,366 @@ var height = 330,
 var aux = timearry.length - 1;
 var width_slider = 1200;
 var height_slider = 50;
-d3.json("../data/states.json", function(states_json) {
-  d3.csv("../data/Data_0322.csv", function(data) {
-    d3.json("../data/Data_geo.json", function(json) {
-      /* ------SLIDER----- */
-      var svg = d3
-        .select("#slider")
-        .attr("class", "chart")
-        .append("svg")
-        .attr("width", width_slider)
-        .attr("height", height_slider);
-      var yeardomain = [0, timearry.length - 1];
-      var axisyears = [
-        //        parseFloat(timearry[0].substring(6)),
-        //        parseFloat(timearry[timearry.length - 1].substring(6))
-        1, timearry.length
-      ];
+d3.csv("../data/total_ad.csv", function(data_total_ad) {
+  d3.json("../data/states.json", function(states_json) {
+    d3.csv("../data/Data_0322.csv", function(data_cases) {
+      d3.json("../data/Data_geo.json", function(json) {
 
-      var pointerdata = [{
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 25
-        },
-        {
-          x: 25,
-          y: 25
-        },
-        {
-          x: 25,
-          y: 0
-        }
-      ];
-      var scale = d3.scale
-        .linear()
-        .domain(yeardomain)
-        .rangeRound([0, width]);
-      var x = d3.svg
-        .axis()
-        .scale(scale)
-        .orient("top")
-        .tickFormat(function(d) {
-          return d;
-        })
-        .tickSize(0)
-        .tickValues(axisyears);
-      svg
-        .append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(" + 7 + ",0)")
-        .call(x);
-      var drag = d3.behavior
-        .drag()
-        .origin(function() {
-          return {
-            x: d3.select(this).attr("x"),
-            y: d3.select(this).attr("y")
-          };
-        })
-        .on("dragstart", dragstart)
-        .on("drag", dragmove)
-        .on("dragend", dragend);
+        var data = data_total_ad
 
-      svg
-        .append("g")
-        .append("rect")
-        .attr("class", "slideraxis")
-        .attr("width", width_slider)
-        .attr("height", 6)
-        .attr("x", 0)
-        .attr("y", 16);
-      var cursor = svg
-        .append("g")
-        .attr("class", "move")
-        .append("svg")
-        .attr("x", 1180)
-        .attr("y", 7)
-        .attr("width", 12)
-        .attr("height", 60);
+        playButton
+          .on("click", function() {
+            autoplaystep = 0;
+            var button = d3.select(this);
+            if (moving) {
+              moving = false;
+              d3.select(this)
+                .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PL.png')")
+                .style("border-width", 0);
 
-      cursor.call(drag);
-      var drawline = d3.svg
-        .line()
-        .x(function(d) {
-          return d.x;
-        })
-        .y(function(d) {
-          return d.y;
-        })
-        .interpolate("linear");
-
-      //---------------------------
-      cursor
-        .append("path")
-        .attr("class", "cursor")
-        .attr("transform", "translate(" + 7 + ",0)")
-        .attr("d", drawline(pointerdata));
-      cursor.on("mouseover", function() {
-        d3.select(".move").style("cursor", "hand");
-      });
-
-      function dragmove() {
-        var x = Math.max(0, Math.min(width, d3.event.x));
-        d3.select(this).attr("x", x);
-        var z = parseInt(scale.invert(x));
-        aux = z;
-        drawMap(z);
-      }
-
-      function dragstart() {
-        d3.select(".cursor").style("fill", "#D9886C");
-      }
-
-      function dragend() {
-        d3.select(".cursor").style("fill", "");
-      }
-      for (var i = 0; i < data.length; i++) {
-        var codeState = data[i].ID;
-        var dataValue = parseFloat(data[i][timearry[timearry.length - 1]]);
-        //    console.log(dataValue);
-        for (var j = 0; j < json.features.length; j++) {
-          var jsonState = json.features[j].properties.ID;
-          if (codeState == jsonState) {
-            json.features[j].properties.value = dataValue;
-            break;
-          }
-        }
-      }
-
-
-      var cont = map
-        .selectAll("#mapa path")
-        .data(json.features)
-        .enter()
-        .append("path")
-        .attr("class", "path")
-        .attr("d", path)
-        .style("fill", function(d) {
-          return getColor(d.properties.value);
-        })
-        .attr("fill-opacity", "0.75")
-        .attr("stroke", "#A9A9A9")
-        .attr("stroke-width", 0.3)
-        .attr("stroke-opacity", "1")
-        .on("click", click)
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseout", mouseout);
-
-
-      var states = map1
-        .selectAll("#mapa1 path")
-        .data(states_json.features)
-        .enter()
-        .append("path")
-        .attr("d", path)
-        .attr("fill-opacity", "0")
-        .style("fill", "none")
-        .attr("stroke", "#000000")
-        .attr("stroke-width", 2)
-        .attr("stroke-opacity", "1")
-        .on("click", click);
-
-  //    states.data(states_json.features)
-  //      .enter().append('text')
-  //      .text(function(d) {
-  //        return d.properties.STUSPS;
-  //      })
-  //      .attr("x", function(d) {
-  //        console.log(projection([d.properties.INTPTLAT, d.properties.INTPTLON])[0])
-
-  //        return  projection([d.properties.INTPTLAT, d.properties.INTPTLON])[0];
-  //      })
-  //      .attr("y", function(d) {
-  //        return  projection([d.properties.INTPTLAT, d.properties.INTPTLON])[1];
-  //      })
-  //      .style("fill", "#000000")
-  //      .style("font-size", "100px");
-
-
-
-
-
-
-      jsonOutside = cont; // pass json to a global so tableRowClicked has access
-
-
-      statesjson = states;
-
-      function mouseover(d) {
-        d3.select(this)
-          .attr("stroke-width", "1.5px")
-          .attr("fill-opacity", "1");
-        div.style("opacity", 0.9);
-        div.html(
-          "<b>" +
-          d.properties.NAME + ", " + d.properties.StateAbbri +
-          "</b></br>Positve cases: <b>" +
-          addComas(data[d.properties.ID][timearry[aux]]) +
-          "</b></br>FIPS: " +
-          d.properties.fip
-        );
-      }
-
-      function mouseout(d) {
-        d3.select(this)
-          .attr("stroke-width", "0.3")
-          .attr("fill-opacity", "0.6");
-        div.style("opacity", 0);
-      }
-
-      function mousemove(d) {
-        div.style({
-          left: function() {
-            if (d3.event.pageX > 780) {
-              return d3.event.pageX - 180 + "px";
             } else {
-              return d3.event.pageX + 23 + "px";
+              moving = true;
+              d3.select(this)
+                .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PA.png')")
+                .style("background-color", "#FFFFFF")
+                .style("border-width", 0);
+              autoplay(timearry.length - 14);
+
             }
+      //      resetbutton();
+          var timeset =  setTimeout(resetbutton, 1000 * 18);
+          })
+
+
+
+        function resetbutton() {
+          playButton
+            .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PL.png')")
+            .style("background-color", "#FFFFFF")
+            .style("border-width", 0);
+        }
+
+
+
+
+
+        /* ------SLIDER----- */
+        var svg = d3
+          .select("#slider")
+          .attr("class", "chart")
+          .append("svg")
+          .attr("width", width_slider)
+          .attr("height", height_slider);
+        var yeardomain = [0, timearry.length - 1];
+        var axisyears = [
+          //        parseFloat(timearry[0].substring(6)),
+          //        parseFloat(timearry[timearry.length - 1].substring(6))
+          1, timearry.length
+        ];
+
+        var pointerdata = [{
+            x: 0,
+            y: 0
           },
-          top: d3.event.pageY - 20 + "px"
+          {
+            x: 0,
+            y: 25
+          },
+          {
+            x: 25,
+            y: 25
+          },
+          {
+            x: 25,
+            y: 0
+          }
+        ];
+        var scale = d3.scale
+          .linear()
+          .domain(yeardomain)
+          .rangeRound([0, width]);
+        var x = d3.svg
+          .axis()
+          .scale(scale)
+          .orient("top")
+          .tickFormat(function(d) {
+            return d;
+          })
+          .tickSize(0)
+          .tickValues(axisyears);
+        svg
+          .append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(" + 7 + ",0)")
+          .call(x);
+        var drag = d3.behavior
+          .drag()
+          .origin(function() {
+            return {
+              x: d3.select(this).attr("x"),
+              y: d3.select(this).attr("y")
+            };
+          })
+          .on("dragstart", dragstart)
+          .on("drag", dragmove)
+          .on("dragend", dragend);
+
+        svg
+          .append("g")
+          .append("rect")
+          .attr("class", "slideraxis")
+          .attr("width", width_slider)
+          .attr("height", 6)
+          .attr("x", 0)
+          .attr("y", 16);
+        var cursor = svg
+          .append("g")
+          .attr("class", "move")
+          .append("svg")
+          .attr("x", 1180)
+          .attr("y", 7)
+          .attr("width", 12)
+          .attr("height", 60);
+
+        cursor.call(drag);
+        var drawline = d3.svg
+          .line()
+          .x(function(d) {
+            return d.x;
+          })
+          .y(function(d) {
+            return d.y;
+          })
+          .interpolate("linear");
+
+        //---------------------------
+        cursor
+          .append("path")
+          .attr("class", "cursor")
+          .attr("transform", "translate(" + 7 + ",0)")
+          .attr("d", drawline(pointerdata));
+        cursor.on("mouseover", function() {
+          d3.select(".move").style("cursor", "hand");
         });
-      }
-      //maxSum(data, aux);
-      function drawMap(index) {
-        //      d3.select("#monthday").html(timearry[index].substring(5));
-        d3.select("#monthday").html(timearry[index]);
-        d3.select("#year").html(timearry[index].substring(0, 4));
 
-        cont.style("fill", function(d) {
-          for (var i = 0; i < data.length; i++) {
-            var codeState = data[i].ID;
-            var dataValue = data[i][timearry[index]];
-            json.features[i].properties.value = dataValue;
 
-          }
-          var value = d.properties.value;
-          if (value) {
-            return getColor(value);
-          } else {
-            return "#ccc";
-          }
-        });
-        maxSum(data, index);
-      }
-      maxSum(data, aux);
-      //  clicked(data);
 
-      function maxSum(d, index) {
-        d3.select("#posicountynum").html("");
-        d3.select("#maxcountynum").html("");
-        d3.select("#totalcasenumber").html("");
-        var datos = [];
-        var county = [];
-        for (var i = 0; i < data.length; i++) {
-          datos.push(parseFloat(d[i][timearry[index]]));
-          county.push(d[i].NAME);
-        }
-        var max_sum = d3.extent(datos);
-        //  console.log(max_sum);
-        var countyMax;
-        var countyPoNum;
-        var tatalcaseNum = 0;
-        var posicounty = 0;
-        var seriouscounty = 0;
-        for (var j = 0; j < data.length; j++) {
-          if (parseFloat(datos[j]) > 0) {
-            posicounty = posicounty + 1;
+        function autoplay(counter) {
+          if (moving) {
+            if (counter < timearry.length - 1) {
+              setTimeout(function() {
+                counter++;
+                autoplaystep = autoplaystep + parseFloat(width_slider) / parseFloat(axisyears[counter]);
+
+                var x = Math.max(0, Math.min(width, parseFloat(autoplaystep)));
+
+                var z = counter;
+
+                console.log(z);
+                aux = z;
+
+
+                autoplaystep = 10
+
+                d3.select("cursor")
+                  //                .attr("class", "cursor")
+                  .attr("class", "cursor")
+                  .data(autoplaystep)
+                  .attr("x", function(d) {
+                    return d;
+                  }) // accessor sets cx to the data point's x
+                  .attr("y", 7) // accessor sets cy to 100 - the data point's y
+                  .attr("transform", "translate(" + 12 + ",0)")
+                  .attr("d", drawline(pointerdata));
+                drawMap(z);
+
+                autoplay(counter);
+              }, 300);
+            }
           }
-          if (parseFloat(datos[j]) > 300) {
-            seriouscounty = seriouscounty + 1;
-          }
-          if (max_sum[1] == parseFloat(datos[j])) {
-            countyMax = county[j];
-          }
-          tatalcaseNum = tatalcaseNum + parseFloat(datos[j]);
-        }
-        max_sum[0] = posicounty;
-        countyMax = seriouscounty;
-        if (index == timearry.length - 1) {
-          tatalcaseNum = tatalcaseNum + unassigned
+
         }
 
 
-        countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
-        var nombretotalcasenumber = d3
-          .select("#totalcasenumber")
-          .html(addComas(tatalcaseNum));
-        var nombrecountyMax = d3
-          .select("#maxcountynum")
-          .html(
-            //  addComas(max_sum[1]) +
-            "<br>" +
-            "<span id='county'>" +
-            countyMax + "  counties in the US have more than 300 positive cases as of the date of the map." +
-            "</span>"
+
+
+
+        function dragmove() {
+          var x = Math.max(0, Math.min(width, d3.event.x));
+          d3.select(this).attr("x", x);
+          var z = parseInt(scale.invert(x));
+          aux = z;
+          drawMap(z);
+        }
+
+        function dragstart() {
+          d3.select(".cursor").style("fill", "#D9886C");
+        }
+
+        function dragend() {
+          d3.select(".cursor").style("fill", "");
+        }
+
+
+        var cont = map
+          .selectAll("#mapa path")
+          .data(json.features)
+          .enter()
+          .append("path")
+          .attr("class", "path")
+          .attr("d", path)
+          .style("fill", function(d) {
+            return getColor(d.properties.value);
+          })
+          .attr("fill-opacity", "0.75")
+          .attr("stroke", "#A9A9A9")
+          .attr("stroke-width", 0.3)
+          .attr("stroke-opacity", "1")
+          .on("click", click)
+          .on("mouseover", mouseover)
+          .on("mousemove", mousemove)
+          .on("mouseout", mouseout);
+
+
+        var states = map1
+          .selectAll("#mapa1 path")
+          .data(states_json.features)
+          .enter()
+          .append("path")
+          .attr("d", path)
+          .attr("fill-opacity", "0")
+          .style("fill", "none")
+          .attr("stroke", "#000000")
+          .attr("stroke-width", 2)
+          .attr("stroke-opacity", "1")
+          .on("click", click);
+
+
+
+        jsonOutside = cont; // pass json to a global so tableRowClicked has access
+
+
+        statesjson = states;
+
+        function mouseover(d) {
+          d3.select(this)
+            .attr("stroke-width", "1.5px")
+            .attr("fill-opacity", "1");
+          div.style("opacity", 0.9);
+          div.html(
+            "<b>" +
+            d.properties.NAME + ", " + d.properties.StateAbbri +
+            "</b></br>Positive cases (per 10k): <b>" +
+            addComas(parseInt(data[d.properties.ID][timearry[aux]] * scalefactor)) +
+            "</b></br>Raw counts:  <b>" +
+            addComas(parseInt(data_cases[d.properties.ID][timearry[aux]] * scalefactor))
           );
-        var nombrecountyPoNum = d3
-          .select("#posicountynum")
-          .html(
-            //    addComas(max_sum[0]) +
-            "<br>" +
-            "<span id='county'>" + max_sum[0] +
-            countyPoNum +
-            "</span"
-          );
-      };
+        }
+
+        function mouseout(d) {
+          d3.select(this)
+            .attr("stroke-width", "0.3")
+            .attr("fill-opacity", "0.6");
+          div.style("opacity", 0);
+        }
+
+        function mousemove(d) {
+          div.style({
+            left: function() {
+              if (d3.event.pageX > 780) {
+                return d3.event.pageX - 180 + "px";
+              } else {
+                return d3.event.pageX + 23 + "px";
+              }
+            },
+            top: d3.event.pageY - 20 + "px"
+          });
+        }
+        //maxSum(data, aux);
+        function drawMap(index) {
+          //      d3.select("#monthday").html(timearry[index].substring(5));
+          d3.select("#monthday").html(timearry[index]);
+          d3.select("#year").html(timearry[index].substring(0, 4));
+
+          cont.style("fill", function(d) {
+            for (var i = 0; i < data.length; i++) {
+              var codeState = data[i].ID;
+              var dataValue = data[i][timearry[index]];
+              json.features[i].properties.value = dataValue * scalefactor;
+
+            }
+            var value = d.properties.value;
+            if (value) {
+              return getColor(value);
+            } else {
+              return "#ccc";
+            }
+          });
+          maxSum(data_cases, index);
+        }
+        drawMap(timearry.length - 1);
+        maxSum(data_cases, aux);
+        //  clicked(data);
+        function maxSum(d, index) {
+          d3.select("#posicountynum").html("");
+          d3.select("#maxcountynum").html("");
+          d3.select("#totalcasenumber").html("");
+          var datos = [];
+          var county = [];
+          for (var i = 0; i < data_cases.length; i++) {
+            datos.push(parseFloat(d[i][timearry[index]]));
+            county.push(d[i].NAME);
+          }
+          var max_sum = d3.extent(datos);
+          //  console.log(max_sum);
+          var countyMax;
+          var countyPoNum;
+          var tatalcaseNum = 0;
+          var posicounty = 0;
+          var seriouscounty = 0;
+          for (var j = 0; j < data_cases.length; j++) {
+            if (parseFloat(datos[j]) > 0) {
+              posicounty = posicounty + 1;
+            }
+            if (parseFloat(datos[j]) > 300) {
+              seriouscounty = seriouscounty + 1;
+            }
+            if (max_sum[1] == parseFloat(datos[j])) {
+              countyMax = county[j];
+            }
+            tatalcaseNum = tatalcaseNum + parseFloat(datos[j]);
+          }
+          max_sum[0] = posicounty;
+          countyMax = seriouscounty;
+          if (index == timearry.length - 1) {
+            tatalcaseNum = tatalcaseNum + unassigned
+          }
+
+
+          countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
+          var nombretotalcasenumber = d3
+            .select("#totalcasenumber")
+            .html(addComas(tatalcaseNum));
+          var nombrecountyMax = d3
+            .select("#maxcountynum")
+            .html(
+              //  addComas(max_sum[1]) +
+              "<br>" +
+              "<span id='county'>" +
+              countyMax + "  counties in the US have more than 300 positive cases as of the date of the map." +
+              "</span>"
+            );
+          var nombrecountyPoNum = d3
+            .select("#posicountynum")
+            .html(
+              //    addComas(max_sum[0]) +
+              "<br>" +
+              "<span id='county'>" + max_sum[0] +
+              countyPoNum +
+              "</span"
+            );
+        };
+      });
     });
   });
 });

@@ -32,6 +32,15 @@
     </script>
   <script src="https://d3js.org/topojson.v1.min.js"></script>
 
+  <script src="https://d3js.org/d3.v4.min.js">  </script>
+<script>
+    d3versiontime= d3
+      console.log('v3', d3versiontime.version)
+  window.d3 = null
+  </script>
+
+
+
   <link href="css/mapa_new.css" rel="stylesheet" type="text/css" />
   <title>US Covid-19 County Map</title>
 </head>
@@ -43,9 +52,17 @@
       <div id="creditinfor"></div>
     </div>
     <div id="dataMap">
+
       <div id="maptitle"></div>
       <div id="mapsubtitle"></div>
+      <div id="block_container">
+        <div id="vis">
+          <button id="play-button"></button>
+        </div>
+        <div id="buttondescription"></div>
+      </div>
       <div id="countyData">
+
         <div id="tasa-parados">
           <div id="year"></div>
           <div id="monthday"></div>
@@ -65,13 +82,13 @@
         <div id="allCanvases">
           <object id="object">
             <div id="mapa1"></div>
-
           </object>
           <object id="object">
             <div id="mapa"></div>
           </object>
         </div>
-
+      </div>
+      <div id="legendname">
       </div>
       <div id="legend_c">
         <div class="key">
@@ -81,22 +98,22 @@
         </div>
         <div class="key">
           <div class="masQuince">
-            <div class="textoLeyenda color"><span>1-10</span></div>
+            <div class="textoLeyenda color"><span>0-1</span></div>
           </div>
         </div>
         <div class="key">
           <div class="masVeinticinco">
-            <div class="textoLeyenda color"><span>10-50</span></div>
+            <div class="textoLeyenda color"><span>1-10</span></div>
           </div>
         </div>
         <div class="key">
           <div class="masTreintaYCinco">
-            <div class="textoLeyenda color"><span>50-300</span></div>
+            <div class="textoLeyenda color"><span>10-100</span></div>
           </div>
         </div>
         <div class="key">
           <div class="masCuarenta">
-            <div class="textoLeyenda color"><span>>300</span></div>
+            <div class="textoLeyenda color"><span>>100</span></div>
           </div>
         </div>
         <!--

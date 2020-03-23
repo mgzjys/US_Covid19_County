@@ -82,7 +82,6 @@ time,
 mark,
 audio,
 video {
-
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -102,7 +101,6 @@ hgroup,
 menu,
 nav,
 section {
-
   display: block;
 }
 
@@ -111,8 +109,8 @@ body {
   left: 5%;
   top: 50%;
   line-height: 1;*/
-   max-width: 1200px;
-   margin: auto;
+  max-width: 1200px;
+  margin: auto;
 }
 
 ol,
@@ -133,7 +131,6 @@ q:after {
 }
 
 table {
-
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -146,24 +143,88 @@ b {
 body {
   font-family: "Optima", Helvetica, Arial, sans-serif;
   font-size: 12px;
-/*  overflow: hidden; /* Hide scrollbars */
+  /*  overflow: hidden; /* Hide scrollbars */
   color: #777;
 }
 
-
 @font-face {
-    font-family: 'Copperplate';
-    src: url('fonts/OPTICopperplate-Heavy.eot'), url('fonts/OPTICopperplate-Heavy.ttf') format('truetype'), url('fonts/OPTICopperplate-Heavy.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Copperplate';
+  src: url('fonts/OPTICopperplate-Heavy.eot'), url('fonts/OPTICopperplate-Heavy.ttf') format('truetype'), url('fonts/OPTICopperplate-Heavy.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
+#play-button {
+  position: relative;
+  top: 10px bottom: 0;
+  background: url('https://mgzjys.github.io/US_Covid19_County/img/PL.png') center center no-repeat;
+  background-size: 64px 64px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  border-width: 0;
+  height: 64px;
+  left: 9%;
+  margin: -64px 0 0 -64px;
+  top: 50%;
+  width: 64px;
+  cursor: pointer;
+}
 
+#play-button:hover {
+  cursor: pointer;
+  background-color: #D3D3D3;
+}
 
+#play-button:focus {
+  outline: 0;
+}
 
+#buttondescription {
+  /*  font-family: "Copperplate", Helvetica, Arial, sans-serif;*/
+  float: left;
+  font-family: "Optima", Helvetica, Arial, sans-serif;
+  text-align: left;
+  margin-bottom: 0px;
+  width: 210px;
+  font-size: 15px;
+}
 
-object
-{
+.ticks {
+  font-size: 10px;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+
+.track-inset {
+  stroke: #dcdcdc;
+  stroke-width: 8px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: crosshair;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+object {
   float: right;
   width: 900px;
   height: 300px;
@@ -171,23 +232,13 @@ object
   margin-top: 10px;
 }
 
-.underlay
-{
+.underlay {
   float: right;
   width: 900px;
   height: 300px;
   position: absolute;
   margin-top: 10px;
 }
-
-
-
-
-
-
-
-
-
 
 #wrapper {
   width: 1200px;
@@ -198,7 +249,7 @@ object
 div.tooltip {
   position: absolute;
   text-align: left;
-  width: 150px;
+  width: 210px;
   height: auto;
   background: white;
   border: 1px solid #ddd;
@@ -211,7 +262,6 @@ div.tooltip {
 }
 
 #mapa svg:active {
-
   cursor: move;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
@@ -230,14 +280,14 @@ div.tooltip {
 #countyData {
   float: left;
   width: 200px;
-
   pointer-events: none;
 }
 
 #countySlider {
   float: left;
-  margin-top: 60px;
-  height: 65px;
+  margin-top: 120px;
+  margin-bottom: 20px;
+  height: 50px;
   width: 1200px;
 }
 
@@ -264,11 +314,10 @@ path1.cursor {
   width: 300px;
   padding-top: 10px;
   border-bottom: #777 1px solid;
-
 }
 
 #maptitle {
-/*  font-family: "Copperplate", Helvetica, Arial, sans-serif;*/
+  /*  font-family: "Copperplate", Helvetica, Arial, sans-serif;*/
   font-family: "Optima", Helvetica, Arial, sans-serif;
   text-align: center;
   margin-top: 0px;
@@ -282,68 +331,56 @@ path1.cursor {
   font-size: 15px;
 }
 
-
-#block_container
-{
-  float:left;
+#block_container {
+  float: left;
   width: 1200px;
 }
 
-#creditinfor
-{
+#creditinfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
   font-size: 9px;
-   display:inline-table;
+  display: inline-table;
 }
 
-#datainfor
-{
+#datainfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
   font-size: 9px;
- display:inline-table;
-
+  display: inline-table;
 }
 
-#contributions
-{
+#contributions {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
   font-size: 9px;
-  display:inline-table;
+  display: inline-table;
 }
 
-#datasource
-{
+#datasource {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
   font-size: 9px;
-  display:inline-table;
+  display: inline-table;
 }
-
 
 /*  padding-top: 20px;
   margin-bottom: -15px;
   margin-left: 620px;*/
-
 #year {
   float: left;
   opacity: 0;
   font-size: 36px;
-  padding-bottom: 20px;
+  padding-top: 10px;
   width: 300px;
 }
 
-
-
 #maxSum {
-
   float: left;
   width: 210;
-/*  margin-top: 10px;*/
-  padding-bottom: 5px;
-
+  height: 200px
+    /*  margin-top: 10px;*/
+    padding-bottom: 0px;
 }
 
 #totalcasenumber {
@@ -351,6 +388,15 @@ path1.cursor {
   float: left;
   width: 300px;
   font-size: 20px;
+}
+
+#legendname {
+  margin-top: 50px;
+  float: left;
+  height: 20px;
+  width: 300px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .totalnumber {
@@ -362,23 +408,22 @@ path1.cursor {
 
 #maxcountynum {
   font-size: 20px;
-  padding-top: 20px;
+  padding-bottom: 0px;
   float: left;
-/*  font-weight: bold;*/
+  /*  font-weight: bold;*/
 }
 
 #posicountynum {
-  margin-top: 20px;
+  padding-bottom: 0px;
   float: left;
   margin-right: 10px;
   font-size: 20px;
-/*  font-weight: bold;*/
+  /*  font-weight: bold;*/
 }
 
 .icono {
   float: left;
   width: 300px;
-
 }
 
 .iconoMaximo {
@@ -406,7 +451,6 @@ path1.cursor {
 }
 
 #slider {
-
   float: left;
   width: 1300px;
   height: 45px;
@@ -425,17 +469,20 @@ path1.cursor {
 }
 
 #legend_c {
-  display: inline-block;
+  float: left;
+  /*display: inline-block;*/
   width: 300px;
-  height: 40px;
+  height: 30px;
   font-size: 0.9em;
   text-align: center;
-  padding: 10px 10px 10px 0;
-  margin-bottom: -100px;
+  padding-top: 15px;
   pointer-events: none;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
   user-select: none;
 }
 
@@ -446,7 +493,6 @@ path1.cursor {
 }
 
 .key:last-child {
-
   border-right: none;
 }
 
@@ -458,45 +504,30 @@ path1.cursor {
   height: 10px;
 }
 
-
 .masCinco .color {
   background-color: #ececec;
 }
 
 .masQuince .color {
-  background-color: #fcae91;
+  background-color: #abdda4;
 }
 
 .masVeinticinco .color {
-  background-color: #fb6a4a;
+  background-color: #ffffbf;
 }
 
 .masTreintaYCinco .color {
-  background-color: #de2d26;
+  background-color: #f4a582;
 }
 
 .masCuarenta .color {
-  background-color: #a50f15;
+  background-color: #ca0020;
 }
-
-
-
-
 
 .background {
   fill: none;
   pointer-events: all;
 }
-
-
-
-
-
-
-
-
-
-
 
 .textoLeyenda {
   height: 10px;
@@ -524,13 +555,11 @@ path1.cursor {
 
 #mapas {
   float: right;
-/*  margin-left: 10px;*/
+  /*  margin-left: 10px;*/
   margin-top: 10px;
   width: 900px;
   height: 520px;
 }
-
-
 
 #canarias {
   //float: right;
