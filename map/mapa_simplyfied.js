@@ -63,7 +63,8 @@ var timearry = new Array(
   "2020-03-19",
   "2020-03-20",
   "2020-03-21",
-  "2020-03-22"
+  "2020-03-22",
+  "2020-03-23"
 );
 //var zoomSettings = {
 //  duration: 1000,
@@ -71,10 +72,10 @@ var timearry = new Array(
 //  zoomLevel: 5
 //};
 
-//0321:735 0322: 604
+//0321:735 0322: 604 0323:
 var jsonOutside;
 var active;
-var unassigned = 604;
+var unassigned = 6183;
 
 var scalefactor = 100000;
 
@@ -218,7 +219,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-23 03:00AM EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-23 13:00 EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -247,7 +248,7 @@ var width_slider = 1200;
 var height_slider = 50;
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0322.csv", function(data_cases) {
+    d3.csv("../data/Data_0323.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
 
         var data = data_total_ad
