@@ -80,9 +80,11 @@ var jsonOutside;
 var active;
 var unassigned = 2979;/////
 var scalefactor = 100000;
-var height = 330,
-width = 1180,
+var height = window.innerHeight,
+width =  window.innerWidth,
 trans = 60;
+
+window.onresize = function(){ location.reload(); }
 
 function click(d) {
   var x, y, k;
@@ -168,8 +170,8 @@ var div = d3
   .attr("class", "tooltip")
   .attr("opacity", 0);
 
-var wmap = 900;
-var hmap = 500;
+var wmap = width*0.7;
+var hmap = height*0.6;
 var centered;
 var projection = d3versionGeo.geoAlbersUsa()
   .scale(1000)
@@ -254,7 +256,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         console.log('new timearray');
         console.log(timearry);
         var aux = timearry.length - 1;
-        var width_slider = 1200;
+        var width_slider = window.innerHeight*0.6;
         var height_slider = 50;
         d3.select("#year").html(timearry[timearry.length - 1].substring(0, 4));
         //d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
