@@ -241,7 +241,7 @@ object {
 }
 
 #wrapper {
-  width: 100%;
+  width: 1200px;
   font-size: 1em;
   margin: 10px;
 }
@@ -278,18 +278,17 @@ div.tooltip {
 }
 
 #countyData {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 30%;
-  height: 50%;
+  float: left;
+  width: 200px;
   pointer-events: none;
 }
 
 #countySlider {
   float: left;
-  width: 100%;
-  height: 10%;
+  padding-top: 120px;
+  margin-bottom: 12px;
+  height: 36px;
+  width: 1200px;
 }
 
 .axis {
@@ -312,7 +311,7 @@ path1.cursor {
   font-size: 20px;
   float: left;
   height: 100;
-  width: 80%;
+  width: 300px;
   padding-top: 10px;
   border-bottom: #777 1px solid;
 }
@@ -321,28 +320,20 @@ path1.cursor {
   /*  font-family: "Copperplate", Helvetica, Arial, sans-serif;*/
   font-family: "Optima", Helvetica, Arial, sans-serif;
   text-align: center;
-  position: relative;
-  top: 0;
+  margin-top: 0px;
   font-size: 45px;
-  width: 100%;
-  height: 10%;
 }
 
 #mapsubtitle {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   text-align: center;
-  position: relative;
-  top: 0;
+  margin-top: 0;
   font-size: 15px;
-  width: 100%;
-  height: 10%;
 }
 
 #block_container {
-  position: relative;
-  top: 0;
-  width: 100%;
-  height: 5%;
+  float: left;
+  width: 1200px;
 }
 
 #creditinfor {
@@ -380,21 +371,22 @@ path1.cursor {
   float: left;
   opacity: 0;
   font-size: 36px;
-  padding-bottom: 20px;
-  width: 80%;
+  padding-top: 0px;
+  width: 300px;
 }
 
 #maxSum {
   float: left;
-  width: 80%;
-  /*  margin-top: 10px;*/
-  padding-bottom: 5px;
+  width: 210;
+  height: 200px
+    /*  margin-top: 10px;*/
+  padding-top: 0px;
 }
 
 #totalcasenumber {
   margin-top: 20px;
   float: left;
-  width: 80%;
+  width: 300px;
   font-size: 20px;
 }
 
@@ -416,18 +408,16 @@ path1.cursor {
 }
 
 .totalnumber {
-  float: left;
   margin-bottom: 10px;
   padding-top: 10px;
   border-bottom: solid 1px #777;
-  width: 100%;
+  width: 300px;
 }
 
 #maxcountynum {
   font-size: 20px;
   padding-bottom: 0px;
   float: left;
-  width: 80%;
   /*  font-weight: bold;*/
 }
 
@@ -436,13 +426,12 @@ path1.cursor {
   float: left;
   margin-right: 10px;
   font-size: 20px;
-  width: 80%;
   /*  font-weight: bold;*/
 }
 
 .icono {
   float: left;
-  width: 90%;
+  width: 300px;
 }
 
 .iconoMaximo {
@@ -471,7 +460,7 @@ path1.cursor {
 
 #slider {
   float: left;
-  width: 100%;
+  width: 1300px;
   height: 45px;
 }
 
@@ -491,15 +480,13 @@ path1.cursor {
 }
 
 #legend_c {
-  display: inline-block;
-  position: relative;
-  bottom: 15%;
-  left: 0;
-  width: 100%;
-  height: 5%;
+  float: left;
+  /*display: inline-block;*/
+  width: 300px;
+  height: 30px;
   font-size: 0.9em;
   text-align: center;
-  padding: 10px 10px 10px 0;
+  padding-top: 10px;
   pointer-events: none;
   -webkit-user-select: none;
   /* Safari */
@@ -572,17 +559,17 @@ path1.cursor {
 }
 
 #dataMap {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 90%;
+  float: left;
+  width: 1230px;
+  height: 520px;
 }
 
 #mapas {
-  float: left;
-  height: 60%;
-  width: 70%;
+  float: right;
+  /*  margin-left: 10px;*/
+  padding-top: 0px;
+  width: 900px;
+  height: 520px;
 }
 
 #canarias {
