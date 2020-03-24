@@ -73,12 +73,12 @@ d3 = d3versionV3;
 //  zoomLevel: 5
 //};
 
-//0321:735 0322: 604 0323:
+//0321:735 0322: 604 0323: 1356
 
 
 var jsonOutside;
 var active;
-var unassigned = 6183;
+var unassigned = 1356;
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -579,9 +579,11 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           d3.select("#maxcountynum").html("");
           d3.select("#totalcasenumber").html("");
           var datos = [];
+          var data_adjust = [];
           var county = [];
           for (var i = 0; i < data_cases.length; i++) {
             datos.push(parseFloat(d[i][timearry[index]]));
+            data_adjust.push(parseFloat(d[i][timearry[index]]));
             county.push(d[i].NAME);
           }
           var max_sum = d3.extent(datos);
@@ -595,7 +597,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(datos[j]) > 300) {
+            if (parseFloat(data_adjust[j]) > 50) {
               seriouscounty = seriouscounty + 1;
             }
             if (max_sum[1] == parseFloat(datos[j])) {
@@ -610,7 +612,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           }
 
 
-          countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
+          countyPoNum = ['  counties in the US have positive cases.'];
           var nombretotalcasenumber = d3
             .select("#totalcasenumber")
             .html(addComas(tatalcaseNum));
@@ -620,7 +622,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 300 positive cases as of the date of the map." +
+              countyMax + "  counties in the US have more than 50 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3
