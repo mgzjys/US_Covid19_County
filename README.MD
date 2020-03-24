@@ -1,4 +1,4 @@
-## Yao‘s branch
+# US Covid-19 County Timeline
 
 ### 03/23
-Edits in this branch will be passed to the master branch.
+US Covid-19 County Timeline
