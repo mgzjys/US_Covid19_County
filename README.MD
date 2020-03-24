@@ -1,4 +1,4 @@
-## Zheng‘s branch
+## Yao‘s branch
 
 ### 03/23
-change timearray assignment from manually initialization to auto extract from total_ad.csv
+Edits in this branch will be passed to the master branch.
