@@ -391,7 +391,7 @@ path1.cursor {
 }
 
 #legendname {
-  margin-top: 50px;
+  margin-top: 60px;
   float: left;
   height: 20px;
   width: 300px;
@@ -486,7 +486,7 @@ path1.cursor {
   height: 30px;
   font-size: 0.9em;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 10px;
   pointer-events: none;
   -webkit-user-select: none;
   /* Safari */
