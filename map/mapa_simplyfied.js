@@ -79,8 +79,10 @@ d3 = d3versionV3;
 var jsonOutside;
 var active;
 var unassigned = 6183;
-
 var scalefactor = 100000;
+var height = 330,
+width = 1180,
+trans = 60;
 
 function click(d) {
   var x, y, k;
@@ -251,9 +253,6 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
         console.log(timearry);
-        var height = 330,
-        width = 1180,
-        trans = 60;
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
