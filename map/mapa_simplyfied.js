@@ -1,83 +1,88 @@
 /* Author(s) = Yao Li (mgzjys@gmail.com)
  * Date: 2020 March
  */
-var timearry = new Array(
-  "2020-01-21",
-  "2020-01-22",
-  "2020-01-23",
-  "2020-01-24",
-  "2020-01-25",
-  "2020-01-26",
-  "2020-01-27",
-  "2020-01-28",
-  "2020-01-29",
-  "2020-01-30",
-  "2020-01-31",
-  "2020-02-01",
-  "2020-02-02",
-  "2020-02-03",
-  "2020-02-04",
-  "2020-02-05",
-  "2020-02-06",
-  "2020-02-07",
-  "2020-02-08",
-  "2020-02-09",
-  "2020-02-10",
-  "2020-02-11",
-  "2020-02-12",
-  "2020-02-13",
-  "2020-02-14",
-  "2020-02-15",
-  "2020-02-16",
-  "2020-02-17",
-  "2020-02-18",
-  "2020-02-19",
-  "2020-02-20",
-  "2020-02-21",
-  "2020-02-22",
-  "2020-02-23",
-  "2020-02-24",
-  "2020-02-25",
-  "2020-02-26",
-  "2020-02-27",
-  "2020-02-28",
-  "2020-02-29",
-  "2020-03-01",
-  "2020-03-02",
-  "2020-03-03",
-  "2020-03-04",
-  "2020-03-05",
-  "2020-03-06",
-  "2020-03-07",
-  "2020-03-08",
-  "2020-03-09",
-  "2020-03-10",
-  "2020-03-11",
-  "2020-03-12",
-  "2020-03-13",
-  "2020-03-14",
-  "2020-03-15",
-  "2020-03-16",
-  "2020-03-17",
-  "2020-03-18",
-  "2020-03-19",
-  "2020-03-20",
-  "2020-03-21",
-  "2020-03-22",
-  "2020-03-23"
-);
+d3 = d3versionV3;
+// var timearry = new Array(
+//   "2020-01-21",
+//   "2020-01-22",
+//   "2020-01-23",
+//   "2020-01-24",
+//   "2020-01-25",
+//   "2020-01-26",
+//   "2020-01-27",
+//   "2020-01-28",
+//   "2020-01-29",
+//   "2020-01-30",
+//   "2020-01-31",
+//   "2020-02-01",
+//   "2020-02-02",
+//   "2020-02-03",
+//   "2020-02-04",
+//   "2020-02-05",
+//   "2020-02-06",
+//   "2020-02-07",
+//   "2020-02-08",
+//   "2020-02-09",
+//   "2020-02-10",
+//   "2020-02-11",
+//   "2020-02-12",
+//   "2020-02-13",
+//   "2020-02-14",
+//   "2020-02-15",
+//   "2020-02-16",
+//   "2020-02-17",
+//   "2020-02-18",
+//   "2020-02-19",
+//   "2020-02-20",
+//   "2020-02-21",
+//   "2020-02-22",
+//   "2020-02-23",
+//   "2020-02-24",
+//   "2020-02-25",
+//   "2020-02-26",
+//   "2020-02-27",
+//   "2020-02-28",
+//   "2020-02-29",
+//   "2020-03-01",
+//   "2020-03-02",
+//   "2020-03-03",
+//   "2020-03-04",
+//   "2020-03-05",
+//   "2020-03-06",
+//   "2020-03-07",
+//   "2020-03-08",
+//   "2020-03-09",
+//   "2020-03-10",
+//   "2020-03-11",
+//   "2020-03-12",
+//   "2020-03-13",
+//   "2020-03-14",
+//   "2020-03-15",
+//   "2020-03-16",
+//   "2020-03-17",
+//   "2020-03-18",
+//   "2020-03-19",
+//   "2020-03-20",
+//   "2020-03-21",
+//   "2020-03-22",
+//   "2020-03-23"
+// );
 //var zoomSettings = {
 //  duration: 1000,
 //  ease: d3.easeCubicOut,
 //  zoomLevel: 5
 //};
 
-//0321:735 0322: 604 0323:
+//0321:735 0322: 604 0323: 1356
+
+
 var jsonOutside;
 var active;
-var unassigned = 6183;
-
+var unassigned = 1356;
 var scalefactor = 100000;
+var height = 330,
+width = 1180,
+trans = 60;
 
 function click(d) {
   var x, y, k;
@@ -109,6 +114,7 @@ function click(d) {
       return d === centered;
     });
   d3 = d3versionV3;
+
   statesjson.transition()
     .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -155,7 +161,7 @@ function getColor(d) {
     colores[1] :
     colores[0];
 }
-d3 = d3versionV3;
+
 var div = d3
   .select("#wrapper")
   .append("div")
@@ -237,20 +243,22 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 
 
-d3.select("#year").html(timearry[timearry.length - 1].substring(0, 4));
-//d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
-d3.select("#monthday").html(timearry[timearry.length - 1]);
-var height = 330,
-  width = 1180,
-  trans = 60;
-var aux = timearry.length - 1;
-var width_slider = 1200;
-var height_slider = 50;
+
+
+
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
     d3.csv("../data/Data_0323.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
-
+        timearry = d3.keys(data_total_ad[0]).slice(3, -5);
+        console.log('new timearray');
+        console.log(timearry);
+        var aux = timearry.length - 1;
+        var width_slider = 1200;
+        var height_slider = 50;
+        d3.select("#year").html(timearry[timearry.length - 1].substring(0, 4));
+        //d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
+        d3.select("#monthday").html(timearry[timearry.length - 1]);
         var data = data_total_ad
 
         playButton
@@ -571,9 +579,11 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           d3.select("#maxcountynum").html("");
           d3.select("#totalcasenumber").html("");
           var datos = [];
+          var data_adjust = [];
           var county = [];
           for (var i = 0; i < data_cases.length; i++) {
             datos.push(parseFloat(d[i][timearry[index]]));
+            data_adjust.push(parseFloat(d[i][timearry[index]]));
             county.push(d[i].NAME);
           }
           var max_sum = d3.extent(datos);
@@ -587,7 +597,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(datos[j]) > 300) {
+            if (parseFloat(data_adjust[j]) > 50) {
               seriouscounty = seriouscounty + 1;
             }
             if (max_sum[1] == parseFloat(datos[j])) {
@@ -602,7 +612,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           }
 
 
-          countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
+          countyPoNum = ['  counties in the US have positive cases.'];
           var nombretotalcasenumber = d3
             .select("#totalcasenumber")
             .html(addComas(tatalcaseNum));
@@ -612,7 +622,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 300 positive cases as of the date of the map." +
+              countyMax + "  counties in the US have more than 50 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3
