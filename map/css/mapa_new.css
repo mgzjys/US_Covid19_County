@@ -109,8 +109,10 @@ body {
   left: 5%;
   top: 50%;
   line-height: 1;*/
-  max-width: 1200px;
-  margin: auto;
+  min-width: 1110px;
+
+  max-width: 1920px;
+  margin: 1% 1% 1.2% 1.2%;
 }
 
 ol,
@@ -241,7 +243,7 @@ object {
 }
 
 #wrapper {
-  width: 1200px;
+  width: 100%;
   font-size: 1em;
   margin: 10px;
 }
@@ -279,7 +281,7 @@ div.tooltip {
 
 #countyData {
   float: left;
-  width: 200px;
+  width: 30%;
   pointer-events: none;
 }
 
@@ -288,7 +290,7 @@ div.tooltip {
   padding-top: 120px;
   margin-bottom: 12px;
   height: 36px;
-  width: 1200px;
+  width: 100%;
 }
 
 .axis {
@@ -311,7 +313,7 @@ path1.cursor {
   font-size: 20px;
   float: left;
   height: 100;
-  width: 300px;
+  width: 90%;
   padding-top: 10px;
   border-bottom: #777 1px solid;
 }
@@ -333,7 +335,7 @@ path1.cursor {
 
 #block_container {
   float: left;
-  width: 1200px;
+  width: 100%;
 }
 
 #creditinfor {
@@ -372,12 +374,12 @@ path1.cursor {
   opacity: 0;
   font-size: 36px;
   padding-top: 0px;
-  width: 300px;
+  width: 80%;
 }
 
 #maxSum {
   float: left;
-  width: 210;
+  width: 100%;
   height: 200px
     /*  margin-top: 10px;*/
   padding-top: 0px;
@@ -386,7 +388,7 @@ path1.cursor {
 #totalcasenumber {
   margin-top: 20px;
   float: left;
-  width: 300px;
+  width: 90%;
   font-size: 20px;
 }
 
@@ -394,7 +396,7 @@ path1.cursor {
   margin-top: 60px;
   float: left;
   height: 20px;
-  width: 300px;
+  width: 100%;
   font-size: 15px;
   font-weight: bold;
   pointer-events: none;
@@ -411,13 +413,14 @@ path1.cursor {
   margin-bottom: 10px;
   padding-top: 10px;
   border-bottom: solid 1px #777;
-  width: 300px;
+  width: 90%;
 }
 
 #maxcountynum {
   font-size: 20px;
   padding-bottom: 0px;
   float: left;
+  width: 90%;
   /*  font-weight: bold;*/
 }
 
@@ -426,12 +429,13 @@ path1.cursor {
   float: left;
   margin-right: 10px;
   font-size: 20px;
+  width: 90%;
   /*  font-weight: bold;*/
 }
 
 .icono {
   float: left;
-  width: 300px;
+  width: 100%;
 }
 
 .iconoMaximo {
@@ -460,7 +464,7 @@ path1.cursor {
 
 #slider {
   float: left;
-  width: 1300px;
+  width: 100%;
   height: 45px;
 }
 
@@ -482,7 +486,7 @@ path1.cursor {
 #legend_c {
   float: left;
   /*display: inline-block;*/
-  width: 300px;
+  width: 100%;
   height: 30px;
   font-size: 0.9em;
   text-align: center;
@@ -560,7 +564,7 @@ path1.cursor {
 
 #dataMap {
   float: left;
-  width: 1230px;
+  width: 100%;
   height: 520px;
 }
 
@@ -568,7 +572,7 @@ path1.cursor {
   float: right;
   /*  margin-left: 10px;*/
   padding-top: 0px;
-  width: 900px;
+  width: 70%;
   height: 520px;
 }
 

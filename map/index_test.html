@@ -44,13 +44,15 @@
   <link href="css/mapa_new.css" rel="stylesheet" type="text/css" />
   <title>US Covid-19 County Map</title>
 </head>
+<header>
+  <div id="block_container">
+    <div id="datainfor"></div>
+    <div id="creditinfor"></div>
+  </div>
+</header>
 
 <body>
   <div id="wrapper">
-    <div id="block_container">
-      <div id="datainfor"></div>
-      <div id="creditinfor"></div>
-    </div>
     <div id="dataMap">
 
       <div id="maptitle"></div>
@@ -76,6 +78,35 @@
           <div class="icono">
             <div id="maxcountynum"></div>
           </div>
+          <div id="legendname">
+          </div>
+          <div id="legend_c">
+            <div class="key">
+              <div class="masCinco">
+                <div class="textoLeyenda color"><span>Not reported</span></div>
+              </div>
+            </div>
+            <div class="key">
+              <div class="masQuince">
+                <div class="textoLeyenda color"><span>0-10</span></div>
+              </div>
+            </div>
+            <div class="key">
+              <div class="masVeinticinco">
+                <div class="textoLeyenda color"><span>10-30</span></div>
+              </div>
+            </div>
+            <div class="key">
+              <div class="masTreintaYCinco">
+                <div class="textoLeyenda color"><span>30-50</span></div>
+              </div>
+            </div>
+            <div class="key">
+              <div class="masCuarenta">
+                <div class="textoLeyenda color"><span>>50</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="mapas">
@@ -88,38 +119,7 @@
           </object>
         </div>
       </div>
-      <div id="legendname">
-      </div>
-      <div id="legend_c">
-        <div class="key">
-          <div class="masCinco">
-            <div class="textoLeyenda color"><span>Not reported</span></div>
-          </div>
-        </div>
-        <div class="key">
-          <div class="masQuince">
-            <div class="textoLeyenda color"><span>0-10</span></div>
-          </div>
-        </div>
-        <div class="key">
-          <div class="masVeinticinco">
-            <div class="textoLeyenda color"><span>10-30</span></div>
-          </div>
-        </div>
-        <div class="key">
-          <div class="masTreintaYCinco">
-            <div class="textoLeyenda color"><span>30-50</span></div>
-          </div>
-        </div>
-        <div class="key">
-          <div class="masCuarenta">
-            <div class="textoLeyenda color"><span>>50</span></div>
-          </div>
-        </div>
-        <!--
-            <div class="k"><div class="color" style="background: rgb(255, 231, 235);"></div><div class="text"><span>2%</span></div></div>
-          -->
-      </div>
+
     </div>
     <div id="countySlider">
       <div class="inicio">2020-01-21</div>
