@@ -172,11 +172,11 @@ var wmap = 900;
 var hmap = 500;
 var centered;
 var projection = d3versionGeo.geoAlbersUsa()
-  .scale(1000)
+  .scale(900)
   .translate([480, 240]);
 
 var projection1 = d3versionGeo.geoAlbersUsa()
-  .scale(1000)
+  .scale(900)
   .translate([480, 240]);
 var path = d3.geo.path().projection(projection);
 var path1 = d3.geo.path().projection(projection1);
@@ -583,9 +583,10 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           var county = [];
           for (var i = 0; i < data_cases.length; i++) {
             datos.push(parseFloat(d[i][timearry[index]]));
-            data_adjust.push(parseFloat(d[i][timearry[index]]));
+      //      data_adjust.push(parseFloat(data[i][timearry[index]]));
             county.push(d[i].NAME);
           }
+          console.log(data_adjust);
           var max_sum = d3.extent(datos);
           //  console.log(max_sum);
           var countyMax;
@@ -597,8 +598,9 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(data_adjust[j]) > 100) {
+            if (parseFloat(data[j][timearry[index]]*scalefactor) > 100) {
               seriouscounty = seriouscounty + 1;
+
             }
             if (max_sum[1] == parseFloat(datos[j])) {
               countyMax = county[j];
@@ -610,6 +612,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           if (index == timearry.length - 1) {
             tatalcaseNum = tatalcaseNum + unassigned
           }
+
+
 
 
           countyPoNum = ['  counties in the US have positive cases.'];
