@@ -104,15 +104,21 @@ section {
   display: block;
 }
 
+header {
+  display: block;
+  margin:0 auto;
+}
+
 body {
-  /*position:relative;
-  left: 5%;
-  top: 50%;
-  line-height: 1;*/
-  min-width: 1110px;
+
+/*  line-height: 1;*/
+  min-width: 1200px;
 
   max-width: 1920px;
-  margin: 1% 1% 1.2% 1.2%;
+
+  max-height: 1080px;
+
+
 }
 
 ol,
@@ -145,6 +151,8 @@ b {
 body {
   font-family: "Optima", Helvetica, Arial, sans-serif;
   font-size: 12px;
+  margin:0 auto;
+/*  margin: 1% 1% 1.2% 1.2%;*/
   /*  overflow: hidden; /* Hide scrollbars */
   color: #777;
 }
@@ -187,7 +195,8 @@ body {
   font-family: "Optima", Helvetica, Arial, sans-serif;
   text-align: left;
   margin-bottom: 0px;
-  width: 210px;
+  margin-left: 0;
+  width: 20%;
   font-size: 15px;
 }
 
@@ -227,9 +236,9 @@ body {
 }
 
 object {
-  float: right;
-  width: 900px;
-  height: 300px;
+float: left;
+  width: 70%;
+  height: 60%;
   position: absolute;
   margin-top: 10px;
 }
@@ -242,8 +251,49 @@ object {
   margin-top: 10px;
 }
 
+
+/* Create two unequal columns that floats next to each other */
+.middle {
+  width: 100%;
+  height: 60%;
+  position: relative;
+}
+
+.middle:after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+.container {
+  width: 70%;
+  height: 60%;
+  float: right;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  height: 60%;
+  padding: 0 0 0 0;
+}
+
+/* Left Sidebar
+-----------------------------------------------------------------------------*/
+.left-sidebar {
+  float: left;
+  width: 30%;
+  margin-left: -100%;
+  position: relative;
+  background: #B5E3FF;
+}
+
+
+
+
 #wrapper {
   width: 100%;
+  height: 100%;
   font-size: 1em;
   margin: 10px;
 }
@@ -280,16 +330,18 @@ div.tooltip {
 }
 
 #countyData {
-  float: left;
+  position: relative;
+  left: 0;
+  top: 0;
   width: 30%;
+  height: 50%;
   pointer-events: none;
 }
 
 #countySlider {
   float: left;
-  padding-top: 120px;
-  margin-bottom: 12px;
-  height: 36px;
+/*  margin-bottom: 12px;*/
+  height: 10%;
   width: 100%;
 }
 
@@ -313,7 +365,7 @@ path1.cursor {
   font-size: 20px;
   float: left;
   height: 100;
-  width: 90%;
+  width: 80%;
   padding-top: 10px;
   border-bottom: #777 1px solid;
 }
@@ -336,33 +388,36 @@ path1.cursor {
 #block_container {
   float: left;
   width: 100%;
+  height: 10%;
 }
+
+
 
 #creditinfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 9px;
+  font-size: 15px;
   display: inline-table;
 }
 
 #datainfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 9px;
+  font-size: 15px;
   display: inline-table;
 }
 
 #contributions {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 9px;
+  font-size: 15px;
   display: inline-table;
 }
 
 #datasource {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 9px;
+  font-size: 15px;
   display: inline-table;
 }
 
@@ -379,10 +434,10 @@ path1.cursor {
 
 #maxSum {
   float: left;
-  width: 100%;
-  height: 200px
+  width: 80%;
+
     /*  margin-top: 10px;*/
-  padding-top: 0px;
+    padding-bottom: 5px;
 }
 
 #totalcasenumber {
@@ -413,7 +468,8 @@ path1.cursor {
   margin-bottom: 10px;
   padding-top: 10px;
   border-bottom: solid 1px #777;
-  width: 90%;
+  width: 100%;
+  float: left;
 }
 
 #maxcountynum {
@@ -465,7 +521,7 @@ path1.cursor {
 #slider {
   float: left;
   width: 100%;
-  height: 45px;
+  height: 20%;
 }
 
 .inicio {
@@ -476,7 +532,7 @@ path1.cursor {
 }
 
 .final {
-  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 0px;
   height: 12px;
   float: right;
@@ -563,17 +619,17 @@ path1.cursor {
 }
 
 #dataMap {
-  float: left;
+  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 520px;
+  height: 90%;
 }
 
 #mapas {
-  float: right;
-  /*  margin-left: 10px;*/
-  padding-top: 0px;
+  float: left;
+  height: 60%;
   width: 70%;
-  height: 520px;
 }
 
 #canarias {

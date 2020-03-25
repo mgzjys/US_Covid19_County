@@ -80,9 +80,15 @@ var jsonOutside;
 var active;
 var unassigned = 2035;/////
 var scalefactor = 100000;
-var height = 330,
+var height = 500,
 width = 1180,
 trans = 60;
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+height = h;
+width = w;
+
 
 function click(d) {
   var x, y, k;
@@ -166,10 +172,10 @@ var div = d3
   .select("#wrapper")
   .append("div")
   .attr("class", "tooltip")
-  .attr("opacity", 0);
+  .attr("opacity", 0)
 
-var wmap = 900;
-var hmap = 500;
+var wmap = width*0.7;
+var hmap = height;
 var centered;
 var projection = d3versionGeo.geoAlbersUsa()
   .scale(1000)
@@ -254,7 +260,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         console.log('new timearray');
         console.log(timearry);
         var aux = timearry.length - 1;
-        var width_slider = 1200;
+        var width_slider = width;
         var height_slider = 50;
         d3.select("#year").html(timearry[timearry.length - 1].substring(0, 4));
         //d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
