@@ -225,7 +225,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-24 22:00 EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-25 10:00AM EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -248,7 +248,7 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0324.csv", function(data_cases) {
+    d3.csv("../data/Data_0325.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
@@ -579,14 +579,14 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           d3.select("#maxcountynum").html("");
           d3.select("#totalcasenumber").html("");
           var datos = [];
-          var data_adjust = [];
+      //    var data_adjust = [];
           var county = [];
           for (var i = 0; i < data_cases.length; i++) {
             datos.push(parseFloat(d[i][timearry[index]]));
       //      data_adjust.push(parseFloat(data[i][timearry[index]]));
             county.push(d[i].NAME);
           }
-          console.log(data_adjust);
+      //    console.log(data_adjust);
           var max_sum = d3.extent(datos);
           //  console.log(max_sum);
           var countyMax;

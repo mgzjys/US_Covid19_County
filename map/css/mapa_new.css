@@ -339,28 +339,28 @@ path1.cursor {
 #creditinfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
 #datainfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
 #contributions {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
 #datasource {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
@@ -468,7 +468,7 @@ path1.cursor {
   padding-left: 4px;
   margin-top: 0px;
   float: left;
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 .final {
@@ -476,7 +476,7 @@ path1.cursor {
   padding-top: 0px;
   height: 12px;
   float: right;
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 #legend_c {
