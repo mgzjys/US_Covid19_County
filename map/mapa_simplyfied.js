@@ -78,7 +78,7 @@ d3 = d3versionV3;
 
 var jsonOutside;
 var active;
-var unassigned = 2035;/////
+var unassigned = 1278;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -225,7 +225,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-24 16:00 EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-24 22:00 EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
