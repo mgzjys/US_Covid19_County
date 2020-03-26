@@ -157,7 +157,7 @@ body {
 #play-button {
   position: relative;
   top: 10px bottom: 0;
-  background: url('https://mgzjys.github.io/US_Covid19_County/img/PL.png') center center no-repeat;
+  background: url('../../img/PL.png') center center no-repeat;
   background-size: 64px 64px;
   background-color: #FFFFFF;
   border-radius: 50%;

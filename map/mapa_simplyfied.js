@@ -197,13 +197,13 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (moving) {
               moving = false;
               d3.select(this)
-                .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PL.png')")
+                .style("background", "url('../img/PL.png')")
                 .style("border-width", 0);
 
             } else {
               moving = true;
               d3.select(this)
-                .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PA.png')")
+                .style("background", "url('../img/PA.png')")
                 .style("background-color", "#FFFFFF")
                 .style("border-width", 0);
               autoplay(timearry.length - 14);
@@ -217,7 +217,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
         function resetbutton() {
           playButton
-            .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PL.png')")
+            .style("background", "url('../img/PL.png')")
             .style("background-color", "#FFFFFF")
             .style("border-width", 0);
         }
