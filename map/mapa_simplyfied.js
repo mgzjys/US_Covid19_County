@@ -2,83 +2,12 @@
  * Date: 2020 March
  */
 d3 = d3versionV3;
-// var timearry = new Array(
-//   "2020-01-21",
-//   "2020-01-22",
-//   "2020-01-23",
-//   "2020-01-24",
-//   "2020-01-25",
-//   "2020-01-26",
-//   "2020-01-27",
-//   "2020-01-28",
-//   "2020-01-29",
-//   "2020-01-30",
-//   "2020-01-31",
-//   "2020-02-01",
-//   "2020-02-02",
-//   "2020-02-03",
-//   "2020-02-04",
-//   "2020-02-05",
-//   "2020-02-06",
-//   "2020-02-07",
-//   "2020-02-08",
-//   "2020-02-09",
-//   "2020-02-10",
-//   "2020-02-11",
-//   "2020-02-12",
-//   "2020-02-13",
-//   "2020-02-14",
-//   "2020-02-15",
-//   "2020-02-16",
-//   "2020-02-17",
-//   "2020-02-18",
-//   "2020-02-19",
-//   "2020-02-20",
-//   "2020-02-21",
-//   "2020-02-22",
-//   "2020-02-23",
-//   "2020-02-24",
-//   "2020-02-25",
-//   "2020-02-26",
-//   "2020-02-27",
-//   "2020-02-28",
-//   "2020-02-29",
-//   "2020-03-01",
-//   "2020-03-02",
-//   "2020-03-03",
-//   "2020-03-04",
-//   "2020-03-05",
-//   "2020-03-06",
-//   "2020-03-07",
-//   "2020-03-08",
-//   "2020-03-09",
-//   "2020-03-10",
-//   "2020-03-11",
-//   "2020-03-12",
-//   "2020-03-13",
-//   "2020-03-14",
-//   "2020-03-15",
-//   "2020-03-16",
-//   "2020-03-17",
-//   "2020-03-18",
-//   "2020-03-19",
-//   "2020-03-20",
-//   "2020-03-21",
-//   "2020-03-22",
-//   "2020-03-23"
-// );
-//var zoomSettings = {
-//  duration: 1000,
-//  ease: d3.easeCubicOut,
-//  zoomLevel: 5
-//};
-
-//0321:735 0322: 604 0323: 1356  0324: 1927
+//0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927
 
 
 var jsonOutside;
 var active;
-var unassigned = 1927;/////
+var unassigned = 1851;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -225,7 +154,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-25 22:00 EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-26 10:00AM EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -248,7 +177,7 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0325.csv", function(data_cases) {
+    d3.csv("../data/Data_0326.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
