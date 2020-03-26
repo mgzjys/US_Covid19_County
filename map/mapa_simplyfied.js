@@ -73,12 +73,12 @@ d3 = d3versionV3;
 //  zoomLevel: 5
 //};
 
-//0321:735 0322: 604 0323: 1356  0324: 2679
+//0321:735 0322: 604 0323: 1356  0324: 1927
 
 
 var jsonOutside;
 var active;
-var unassigned = 1278;/////
+var unassigned = 1927;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
