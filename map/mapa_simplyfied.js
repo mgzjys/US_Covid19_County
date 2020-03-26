@@ -19,7 +19,7 @@ function click(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 15;
+    k = 8;
     centered = d;
   } else {
     x = width / 2;
@@ -47,7 +47,7 @@ function click(d) {
   statesjson.transition()
     .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 1.5 / k + "px");
+    .style("stroke-width", 3 / k + "px");
 
 
 
@@ -395,7 +395,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             return getColor(d.properties.value);
           })
           .attr("fill-opacity", "0.75")
-          .attr("stroke", "#A9A9A9")
+          .attr("stroke", "#000000") //A9A9A9
           .attr("stroke-width", 0.3)
           .attr("stroke-opacity", "1")
           .on("click", click)
@@ -412,8 +412,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .attr("d", path)
           .attr("fill-opacity", "0")
           .style("fill", "none")
-          .attr("stroke", "#000000")
-          .attr("stroke-width", 1.5)
+          .attr("stroke", "#000000") //#0000FF
+          .attr("stroke-width", 3)
           .attr("stroke-opacity", "1")
           .on("click", click);
 
