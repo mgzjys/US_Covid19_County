@@ -185,10 +185,6 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
         console.log(timearry);
-<<<<<<< HEAD
-
-=======
->>>>>>> 9083f40447f10d20ee1e480b7ff129816ab6fa73
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
