@@ -1,4 +1,4 @@
-## Zheng‘s branch
+# US Covid-19 County Timeline
 
 ### 03/23
-change timearray assignment from manually initialization to auto extract from total_ad.csv
+US Covid-19 County Timeline

@@ -73,14 +73,16 @@ d3 = d3versionV3;
 //  zoomLevel: 5
 //};
 
-//0321:735 0322: 604 0323:
+//0321:735 0322: 604 0323: 1356  0324: 2679
 
 
 var jsonOutside;
 var active;
-var unassigned = 6183;
-
+var unassigned = 2979;/////
 var scalefactor = 100000;
+var height = 330,
+width = 1180,
+trans = 60;
 
 var height = 330,
 width = 1180,
@@ -226,7 +228,7 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-23 13:00 EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-24 10:00AM EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -249,12 +251,15 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0323.csv", function(data_cases) {
+    d3.csv("../data/Data_0324.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
         console.log(timearry);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9083f40447f10d20ee1e480b7ff129816ab6fa73
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
@@ -581,9 +586,11 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           d3.select("#maxcountynum").html("");
           d3.select("#totalcasenumber").html("");
           var datos = [];
+          var data_adjust = [];
           var county = [];
           for (var i = 0; i < data_cases.length; i++) {
             datos.push(parseFloat(d[i][timearry[index]]));
+            data_adjust.push(parseFloat(d[i][timearry[index]]));
             county.push(d[i].NAME);
           }
           var max_sum = d3.extent(datos);
@@ -597,7 +604,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(datos[j]) > 300) {
+            if (parseFloat(data_adjust[j]) > 50) {
               seriouscounty = seriouscounty + 1;
             }
             if (max_sum[1] == parseFloat(datos[j])) {
@@ -612,7 +619,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           }
 
 
-          countyPoNum = ['  counties in the US have positive cases as of the date of the map.'];
+          countyPoNum = ['  counties in the US have positive cases.'];
           var nombretotalcasenumber = d3
             .select("#totalcasenumber")
             .html(addComas(tatalcaseNum));
@@ -622,7 +629,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 300 positive cases as of the date of the map." +
+              countyMax + "  counties in the US have more than 50 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3
