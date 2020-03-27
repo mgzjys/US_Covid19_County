@@ -156,9 +156,14 @@ body {
 
 #play-button {
   position: relative;
+<<<<<<< HEAD
   top: 10px ;
   bottom: 0;
   background: url('https://mgzjys.github.io/US_Covid19_County/img/PL.png') center center no-repeat;
+=======
+  top: 10px bottom: 0;
+  background: url('../../img/PL.png') center center no-repeat;
+>>>>>>> 7ecd4946e0e85a1b57076f770a407c37374bb709
   background-size: 64px 64px;
   background-color: #FFFFFF;
   border-radius: 50%;
@@ -340,28 +345,28 @@ path1.cursor {
 #creditinfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
 #datainfor {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
 #contributions {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: right;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
 #datasource {
   font-family: "Arial Narrow", Helvetica, Arial, sans-serif;
   float: left;
-  font-size: 9px;
+  font-size: 12px;
   display: inline-table;
 }
 
@@ -469,7 +474,7 @@ path1.cursor {
   padding-left: 4px;
   margin-top: 0px;
   float: left;
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 .final {
@@ -477,7 +482,7 @@ path1.cursor {
   padding-top: 0px;
   height: 12px;
   float: right;
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 #legend_c {

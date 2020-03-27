@@ -2,83 +2,12 @@
  * Date: 2020 March
  */
 d3 = d3versionV3;
-// var timearry = new Array(
-//   "2020-01-21",
-//   "2020-01-22",
-//   "2020-01-23",
-//   "2020-01-24",
-//   "2020-01-25",
-//   "2020-01-26",
-//   "2020-01-27",
-//   "2020-01-28",
-//   "2020-01-29",
-//   "2020-01-30",
-//   "2020-01-31",
-//   "2020-02-01",
-//   "2020-02-02",
-//   "2020-02-03",
-//   "2020-02-04",
-//   "2020-02-05",
-//   "2020-02-06",
-//   "2020-02-07",
-//   "2020-02-08",
-//   "2020-02-09",
-//   "2020-02-10",
-//   "2020-02-11",
-//   "2020-02-12",
-//   "2020-02-13",
-//   "2020-02-14",
-//   "2020-02-15",
-//   "2020-02-16",
-//   "2020-02-17",
-//   "2020-02-18",
-//   "2020-02-19",
-//   "2020-02-20",
-//   "2020-02-21",
-//   "2020-02-22",
-//   "2020-02-23",
-//   "2020-02-24",
-//   "2020-02-25",
-//   "2020-02-26",
-//   "2020-02-27",
-//   "2020-02-28",
-//   "2020-02-29",
-//   "2020-03-01",
-//   "2020-03-02",
-//   "2020-03-03",
-//   "2020-03-04",
-//   "2020-03-05",
-//   "2020-03-06",
-//   "2020-03-07",
-//   "2020-03-08",
-//   "2020-03-09",
-//   "2020-03-10",
-//   "2020-03-11",
-//   "2020-03-12",
-//   "2020-03-13",
-//   "2020-03-14",
-//   "2020-03-15",
-//   "2020-03-16",
-//   "2020-03-17",
-//   "2020-03-18",
-//   "2020-03-19",
-//   "2020-03-20",
-//   "2020-03-21",
-//   "2020-03-22",
-//   "2020-03-23"
-// );
-//var zoomSettings = {
-//  duration: 1000,
-//  ease: d3.easeCubicOut,
-//  zoomLevel: 5
-//};
-
-//0321:735 0322: 604 0323: 1356  0324: 2679
+//0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2817
 
 
 var jsonOutside;
 var active;
-var unassigned = 2979;/////
+var unassigned = 2817;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -93,7 +22,7 @@ function click(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 15;
+    k = 8;
     centered = d;
   } else {
     x = width / 2;
@@ -121,7 +50,7 @@ function click(d) {
   statesjson.transition()
     .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 1.5 / k + "px");
+    .style("stroke-width", 3 / k + "px");
 
 
 
@@ -154,11 +83,11 @@ var colores = ["#ececec", "#abdda4", "#ffffbf", "#f4a582", "#ca0020"]
 
 function getColor(d) {
   //console.log(d);
-  return d > 50 ?
+  return d > 100 ?
     colores[4] :
-    d > 30 ?
+    d > 50 ?
     colores[3] :
-    d > 5 ?
+    d > 10 ?
     colores[2] :
     d > 0 ?
     colores[1] :
@@ -175,11 +104,11 @@ var wmap = 900;
 var hmap = 500;
 var centered;
 var projection = d3versionGeo.geoAlbersUsa()
-  .scale(1000)
+  .scale(900)
   .translate([480, 240]);
 
 var projection1 = d3versionGeo.geoAlbersUsa()
-  .scale(1000)
+  .scale(900)
   .translate([480, 240]);
 var path = d3.geo.path().projection(projection);
 var path1 = d3.geo.path().projection(projection1);
@@ -228,9 +157,9 @@ d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-24 10:00AM EST");
+d3.select("#datainfor").html("Data updated time: 2020-03-26 22:00 EST");
 
-d3.select("#contributions").html("Contribution: Visualization by Yao Li. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
+d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
 d3.select("#datasource").html("Data source: 1Point3Acres");
 
@@ -251,7 +180,7 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0324.csv", function(data_cases) {
+    d3.csv("../data/Data_0326.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
@@ -275,13 +204,13 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (moving) {
               moving = false;
               d3.select(this)
-                .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PL.png')")
+                .style("background", "url('../img/PL.png')")
                 .style("border-width", 0);
 
             } else {
               moving = true;
               d3.select(this)
-                .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PA.png')")
+                .style("background", "url('../img/PA.png')")
                 .style("background-color", "#FFFFFF")
                 .style("border-width", 0);
               autoplay(timearry.length - 14);
@@ -295,7 +224,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
         function resetbutton() {
           playButton
-            .style("background", "url('https://mgzjys.github.io/US_Covid19_County/img/PL.png')")
+            .style("background", "url('../img/PL.png')")
             .style("background-color", "#FFFFFF")
             .style("border-width", 0);
         }
@@ -473,7 +402,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             return getColor(d.properties.value);
           })
           .attr("fill-opacity", "0.75")
-          .attr("stroke", "#A9A9A9")
+          .attr("stroke", "#000000") //A9A9A9
           .attr("stroke-width", 0.3)
           .attr("stroke-opacity", "1")
           .on("click", click)
@@ -490,8 +419,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .attr("d", path)
           .attr("fill-opacity", "0")
           .style("fill", "none")
-          .attr("stroke", "#000000")
-          .attr("stroke-width", 1.5)
+          .attr("stroke", "#000000") //#0000FF
+          .attr("stroke-width", 3)
           .attr("stroke-opacity", "1")
           .on("click", click);
 
@@ -586,13 +515,14 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           d3.select("#maxcountynum").html("");
           d3.select("#totalcasenumber").html("");
           var datos = [];
-          var data_adjust = [];
+      //    var data_adjust = [];
           var county = [];
           for (var i = 0; i < data_cases.length; i++) {
             datos.push(parseFloat(d[i][timearry[index]]));
-            data_adjust.push(parseFloat(d[i][timearry[index]]));
+      //      data_adjust.push(parseFloat(data[i][timearry[index]]));
             county.push(d[i].NAME);
           }
+      //    console.log(data_adjust);
           var max_sum = d3.extent(datos);
           //  console.log(max_sum);
           var countyMax;
@@ -604,8 +534,9 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(data_adjust[j]) > 50) {
+            if (parseFloat(data[j][timearry[index]]*scalefactor) > 100) {
               seriouscounty = seriouscounty + 1;
+
             }
             if (max_sum[1] == parseFloat(datos[j])) {
               countyMax = county[j];
@@ -619,6 +550,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           }
 
 
+
+
           countyPoNum = ['  counties in the US have positive cases.'];
           var nombretotalcasenumber = d3
             .select("#totalcasenumber")
@@ -629,7 +562,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 50 positive cases per 100,000 county population." +
+              countyMax + "  counties in the US have more than 100 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3

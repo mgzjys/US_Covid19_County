@@ -32,12 +32,21 @@
     </script>
   <script src="https://d3js.org/topojson.v1.min.js"></script>
 
-  <script src="https://d3js.org/d3.v4.min.js">  </script>
-<script>
+  <script src="https://d3js.org/d3.v4.min.js"> </script>
+  <script>
     d3versiontime= d3
       console.log('v3', d3versiontime.version)
   window.d3 = null
   </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161875924-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161875924-1');
+</script>
 
 
 
@@ -103,17 +112,17 @@
         </div>
         <div class="key">
           <div class="masVeinticinco">
-            <div class="textoLeyenda color"><span>10-30</span></div>
+            <div class="textoLeyenda color"><span>10-50</span></div>
           </div>
         </div>
         <div class="key">
           <div class="masTreintaYCinco">
-            <div class="textoLeyenda color"><span>30-50</span></div>
+            <div class="textoLeyenda color"><span>50-100</span></div>
           </div>
         </div>
         <div class="key">
           <div class="masCuarenta">
-            <div class="textoLeyenda color"><span>>50</span></div>
+            <div class="textoLeyenda color"><span>>100</span></div>
           </div>
         </div>
         <!--
@@ -123,7 +132,7 @@
     </div>
     <div id="countySlider">
       <div class="inicio">2020-01-21</div>
-      <div class="final">2020-03-24</div>
+      <div class="final">2020-03-26</div>
       <div id="slider"></div>
     </div>
     <div id="block_container">
