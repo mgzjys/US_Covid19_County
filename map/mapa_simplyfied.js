@@ -19,7 +19,7 @@ function click(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 8;
+    k = 21;
     centered = d;
   } else {
     x = width / 2;
@@ -36,7 +36,7 @@ function click(d) {
   jsonOutside.transition()
     .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 0.3 / k + "px");
+    .style("stroke-width", 0.15 / k + "px");
 
   statesjson.selectAll("path")
     .classed(".active", centered && function(d) {
@@ -75,7 +75,7 @@ function addComas(n) {
 
 //var colores = d3.schemeReds[5]
 
-var colores = ["#ececec", "#abdda4", "#ffffbf", "#f4a582", "#ca0020"]
+var colores = ["#ececec", "#ffffd4", "#fed98e", "#fe9929", "#ca0020"]
 
 
 function getColor(d) {
@@ -396,8 +396,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           })
           .attr("fill-opacity", "0.75")
           .attr("stroke", "#000000") //A9A9A9
-          .attr("stroke-width", 0.3)
-          .attr("stroke-opacity", "1")
+          .attr("stroke-width", 0.15)
+          .attr("stroke-opacity", "0.5")
           .on("click", click)
           .on("mouseover", mouseover)
           .on("mousemove", mousemove)
