@@ -75,7 +75,7 @@ function addComas(n) {
 
 //var colores = d3.schemeReds[5]
 
-var colores = ["#ececec", "#ffffd4", "#fed98e", "#fe9929", "#ca0020"]
+var colores = ["#ececec", "#ffffd4", "#fed98e", "#ec7014", "#ca0020"]
 
 
 function getColor(d) {
