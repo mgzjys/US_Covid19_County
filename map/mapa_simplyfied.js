@@ -462,7 +462,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         function mouseout(d) {
           d3.select(this)
             .attr("stroke-width", "0.3")
-            .attr("fill-opacity", "0.6");
+            .attr("fill-opacity", "0.75");
           div.style("opacity", 0);
         }
 
