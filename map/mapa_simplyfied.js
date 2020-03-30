@@ -206,7 +206,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
                 .style("background", "url('../img/PA.png')")
                 .style("background-color", "#FFFFFF")
                 .style("border-width", 0);
-              autoplay(timearry.length - 14);
+              autoplay(timearry.length - 15);
 
             }
       //      resetbutton();
