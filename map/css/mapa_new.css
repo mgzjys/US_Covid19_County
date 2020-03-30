@@ -329,6 +329,19 @@ path1.cursor {
   text-align: center;
   margin-top: 0;
   font-size: 15px;
+  font-weight: bold;
+  font-display: fallback;
+}
+
+.blinking{
+    animation:blinkingText 1.2s 7;
+}
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: #000; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #000;    }
 }
 
 #block_container {

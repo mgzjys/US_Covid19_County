@@ -150,7 +150,7 @@ var autoplaystep = 0;
 //  .attr("height", hCan);
 d3.select("#maptitle").html("US Covid-19 County Timeline");
 
-d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)");
+d3.select("#mapsubtitle").html("(one-click on map to zoom in; double-click to zoom out)");
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
