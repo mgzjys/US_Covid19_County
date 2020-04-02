@@ -3,12 +3,12 @@
  */
 d3 = d3versionV3;
 //0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2903
-//0327:3711 0328:4549 0329:5361 0330:6644 0331:6333
+//0327:3711 0328:4549 0329:5361 0330:6644 0331:6333 0401:7944
 
 
 var jsonOutside;
 var active;
-var unassigned = 7944;/////
+var unassigned = 8069;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -155,7 +155,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; double-click to zo
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-04-01 22:00 EST");
+d3.select("#datainfor").html("Data updated time: 2020-04-02 09:00AM EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -178,7 +178,7 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0401.csv", function(data_cases) {
+    d3.csv("../data/Data_0402.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
