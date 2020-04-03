@@ -330,6 +330,19 @@ path1.cursor {
   text-align: center;
   margin-top: 0;
   font-size: 15px;
+  font-weight: bold;
+  font-display: fallback;
+}
+
+.blinking{
+    animation:blinkingText 1.2s 7;
+}
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: #000; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #000;    }
 }
 
 #block_container {
@@ -521,15 +534,15 @@ path1.cursor {
 }
 
 .masQuince .color {
-  background-color: #abdda4;
+  background-color: #ffffd4;
 }
 
 .masVeinticinco .color {
-  background-color: #ffffbf;
+  background-color: #fed98e;
 }
 
 .masTreintaYCinco .color {
-  background-color: #f4a582;
+  background-color: #ec7014;
 }
 
 .masCuarenta .color {

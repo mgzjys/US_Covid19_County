@@ -2,12 +2,13 @@
  * Date: 2020 March
  */
 d3 = d3versionV3;
-//0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2903  0327:3711
+//0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2903
+//0327:3711 0328:4549 0329:5361 0330:6644 0331:6333 0401:7944 0402:8302
 
 
 var jsonOutside;
 var active;
-var unassigned = 7940;/////
+var unassigned = 8246;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -22,7 +23,7 @@ function click(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 8;
+    k = 15;
     centered = d;
   } else {
     x = width / 2;
@@ -39,7 +40,7 @@ function click(d) {
   jsonOutside.transition()
     .duration(960)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 0.3 / k + "px");
+    .style("stroke-width", 0.15 / k + "px");
 
   statesjson.selectAll("path")
     .classed(".active", centered && function(d) {
@@ -78,7 +79,7 @@ function addComas(n) {
 
 //var colores = d3.schemeReds[5]
 
-var colores = ["#ececec", "#abdda4", "#ffffbf", "#f4a582", "#ca0020"]
+var colores = ["#ececec", "#ffffd4", "#fed98e", "#ec7014", "#ca0020"]
 
 
 function getColor(d) {
@@ -153,11 +154,11 @@ var autoplaystep = 0;
 //  .attr("height", hCan);
 d3.select("#maptitle").html("US Covid-19 County Timeline");
 
-d3.select("#mapsubtitle").html("(one-click to zoom in; double-click to zoom out)");
+d3.select("#mapsubtitle").html("(one-click on map to zoom in; double-click to zoom out)");
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-03-28 16:00 EST");
+d3.select("#datainfor").html("Data updated time (09:00,14:00,18:00,22:00) : 2020-04-03 14:00 EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -180,7 +181,7 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0328.csv", function(data_cases) {
+    d3.csv("../data/Data_0403.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         console.log('new timearray');
@@ -209,7 +210,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
                 .style("background", "url('../img/PA.png')")
                 .style("background-color", "#FFFFFF")
                 .style("border-width", 0);
-              autoplay(timearry.length - 14);
+              autoplay(timearry.length - 15);
 
             }
       //      resetbutton();
@@ -399,8 +400,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           })
           .attr("fill-opacity", "0.75")
           .attr("stroke", "#000000") //A9A9A9
-          .attr("stroke-width", 0.3)
-          .attr("stroke-opacity", "1")
+          .attr("stroke-width", 0.15)
+          .attr("stroke-opacity", "0.5")
           .on("click", click)
           .on("mouseover", mouseover)
           .on("mousemove", mousemove)
@@ -454,7 +455,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
           div.html(
             "<b>" +
-            d.properties.NAME + ", " + d.properties.StateAbbri +
+            d.properties.NAME + ", " + d.properties.StateName +
             "</b></br>Positive cases (per 100k): <b>" +
             adjust_cases +
             "</b></br>Raw counts:  <b>" +
@@ -465,7 +466,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         function mouseout(d) {
           d3.select(this)
             .attr("stroke-width", "0.3")
-            .attr("fill-opacity", "0.6");
+            .attr("fill-opacity", "0.75");
           div.style("opacity", 0);
         }
 
