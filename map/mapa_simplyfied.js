@@ -20,7 +20,7 @@ function click(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 21;
+    k = 15;
     centered = d;
   } else {
     x = width / 2;
