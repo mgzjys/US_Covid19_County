@@ -130,6 +130,13 @@ q:after {
   content: none;
 }
 
+/*
+input {
+  float: left;
+  width: 30%;
+  z-index: 1;
+}
+*/
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -280,7 +287,8 @@ div.tooltip {
 #countyData {
   float: left;
   width: 200px;
-  pointer-events: none;
+/*  pointer-events: none;*/
+  z-index: 1;
 }
 
 #countySlider {

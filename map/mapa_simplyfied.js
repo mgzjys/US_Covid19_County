@@ -8,7 +8,7 @@ d3 = d3versionV3;
 
 var jsonOutside;
 var active;
-var unassigned = 8482;/////
+var unassigned = 8200;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -155,7 +155,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; double-click to zo
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time (09:00,14:00,18:00,22:00) : 2020-04-03 18:00 EST");
+d3.select("#datainfor").html("Data updated time (09:00,14:00,18:00,22:00) : 2020-04-03 22:00 EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -181,8 +181,8 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
     d3.csv("../data/Data_0403.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
-        console.log('new timearray');
-        console.log(timearry);
+    //    console.log('new timearray');
+    //    console.log(timearry);
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
@@ -339,7 +339,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
                 var z = counter;
 
-                console.log(z);
+      //          console.log(z);
                 aux = z;
 
 
