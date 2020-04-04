@@ -5,10 +5,10 @@ d3 = d3versionV3;
 //0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2903
 //0327:3711 0328:4549 0329:5361 0330:6644 0331:6333 0401:7944 0402:8302
 
-
+var selectID;
 var jsonOutside;
 var active;
-var unassigned = 8246;/////
+var unassigned = 8200;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -19,46 +19,7 @@ width = 1180,
 trans = 60;
 
 
-function click(d) {
-  var x, y, k;
-  if (d && centered !== d) {
-    
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 15;
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
 
-  jsonOutside.selectAll("path")
-    .classed(".active", centered && function(d) {
-      return d === centered;
-    });
-  d3 = d3versionV3;
-  jsonOutside.transition()
-    .duration(960)
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 0.15 / k + "px");
-
-  statesjson.selectAll("path")
-    .classed(".active", centered && function(d) {
-      return d === centered;
-    });
-  d3 = d3versionV3;
-
-  statesjson.transition()
-    .duration(960)
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 3 / k + "px");
-
-
-
-}
 
 
 
@@ -86,7 +47,7 @@ var colores = ["#ececec", "#ffffd4", "#fed98e", "#ec7014", "#ca0020"]
 
 
 function getColor(d) {
-  //console.log(d);
+  // console.log('get color');
   return d > 100 ?
     colores[4] :
     d > 50 ?
@@ -162,7 +123,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; double-click to zo
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time (09:00,14:00,18:00,22:00) : 2020-04-03 14:00 EST");
+d3.select("#datainfor").html("Data updated time (09:00,14:00,18:00,22:00) : 2020-04-03 22:00 EST");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -350,7 +311,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
                 var z = counter;
 
-                console.log(z);
+      //          console.log(z);
                 aux = z;
 
 
@@ -444,15 +405,68 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             console.log(geoid);
             var evt = new MouseEvent("click");
             if(geoid){
-              d3.select('#GEOID'+geoid).node().dispatchEvent(evt);
+              d3.select('#GEOID'+geoid)
+              .style("fill", "#000FF")
+              .node().dispatchEvent(evt);
+              
             }
             else{
               console.log('Zipcode not found!')
             }
           });
         statesjson = states;
+        
+        function click(d) {
+          var x, y, k;
+          
+          selectID = d3.select(this).attr('id');
+          console.log('SelectID'+selectID);
+          if (d && centered !== d) {
+            d3.select(this)
+            .style('fill','#0000FF');
+            var centroid = path.centroid(d);
+            x = centroid[0];
+            y = centroid[1];
+            k = 15;
+            centered = d;
+          } else {
+            d3.select(this).style("fill", function(d) {
+              return getColor(d.properties.value);
+            })
+            x = width / 2;
+            y = height / 2;
+            k = 1;
+            centered = null;
 
+          }
+        
+          jsonOutside.selectAll("path")
+            .classed(".active", centered && function(d) {
+              return d === centered;
+            });
+          d3 = d3versionV3;
+          jsonOutside.transition()
+            .duration(960)
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            
+            .style("stroke-width", 0.15 / k + "px");
+            
+          statesjson.selectAll("path")
+            .classed(".active", centered && function(d) {
+              return d === centered;
+            });
+          d3 = d3versionV3;
+        
+          statesjson.transition()
+            .duration(960)
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            .style("stroke-width", 3 / k + "px");
+        
+        
+        
+        }
         function mouseover(d) {
+          
           d3.select(this)
             .attr("stroke-width", "1.5px")
             .attr("fill-opacity", "1");
@@ -527,6 +541,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             }
           });
           maxSum(data_cases, index);
+          console.log('drawMap call');
         }
         drawMap(timearry.length - 1);
         maxSum(data_cases, aux);
@@ -606,6 +621,6 @@ d3.select("#wrapper").on("touchstart", function() {
   div
     //    .transition()
     //    .duration(100)
-    .on("click", click)
+    // .on("click", click)
     .style("opacity", 0);
 });
