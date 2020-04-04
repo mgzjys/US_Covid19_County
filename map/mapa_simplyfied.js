@@ -142,7 +142,6 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 
 
-
 d3.csv("../data/zip_county.csv",function(zipcounty){
   var zip2fips = {};
   for (var i = 0; i < zipcounty.length; i++)
@@ -162,7 +161,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         //d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
         d3.select("#monthday").html(timearry[timearry.length - 1]);
         var data = data_total_ad
-        
+
         playButton
           .on("click", function() {
             autoplaystep = 0;
@@ -408,17 +407,17 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               d3.select('#GEOID'+geoid)
               .style("fill", "#000FF")
               .node().dispatchEvent(evt);
-              
+
             }
             else{
               console.log('Zipcode not found!')
             }
           });
         statesjson = states;
-        
+
         function click(d) {
           var x, y, k;
-          
+
           selectID = d3.select(this).attr('id');
           console.log('SelectID'+selectID);
           if (d && centered !== d) {
@@ -439,7 +438,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             centered = null;
 
           }
-        
+
           jsonOutside.selectAll("path")
             .classed(".active", centered && function(d) {
               return d === centered;
@@ -448,25 +447,25 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           jsonOutside.transition()
             .duration(960)
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-            
+
             .style("stroke-width", 0.15 / k + "px");
-            
+
           statesjson.selectAll("path")
             .classed(".active", centered && function(d) {
               return d === centered;
             });
           d3 = d3versionV3;
-        
+
           statesjson.transition()
             .duration(960)
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
             .style("stroke-width", 3 / k + "px");
-        
-        
-        
+
+
+
         }
         function mouseover(d) {
-          
+
           d3.select(this)
             .attr("stroke-width", "1.5px")
             .attr("fill-opacity", "1");
