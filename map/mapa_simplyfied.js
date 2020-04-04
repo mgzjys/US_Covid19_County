@@ -401,6 +401,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             zipcode = document.getElementById('zip').value;
             geoid = zip2fips[zipcode]
 
+
             console.log(geoid);
             var evt = new MouseEvent("click");
             if(geoid){
@@ -419,6 +420,13 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           var x, y, k;
 
           selectID = d3.select(this).attr('id');
+
+
+
+          cont.style("fill", function(d) {
+              return getColor(d.properties.value);
+            })
+
           console.log('SelectID'+selectID);
           if (d && centered !== d) {
             d3.select(this)
