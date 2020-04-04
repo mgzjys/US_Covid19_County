@@ -5,7 +5,7 @@ d3 = d3versionV3;
 //0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2903
 //0327:3711 0328:4549 0329:5361 0330:6644 0331:6333 0401:7944 0402:8302
 
-
+var selectID;
 var jsonOutside;
 var active;
 var unassigned = 8200;/////
@@ -14,45 +14,12 @@ var height = 330,
 width = 1180,
 trans = 60;
 
-function click(d) {
-  var x, y, k;
-  if (d && centered !== d) {
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 15;
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
-
-  jsonOutside.selectAll("path")
-    .classed(".active", centered && function(d) {
-      return d === centered;
-    });
-  d3 = d3versionV3;
-  jsonOutside.transition()
-    .duration(960)
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 0.15 / k + "px");
-
-  statesjson.selectAll("path")
-    .classed(".active", centered && function(d) {
-      return d === centered;
-    });
-  d3 = d3versionV3;
-
-  statesjson.transition()
-    .duration(960)
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 3 / k + "px");
+var height = 330,
+width = 1180,
+trans = 60;
 
 
 
-}
 
 
 
@@ -80,7 +47,7 @@ var colores = ["#ececec", "#ffffd4", "#fed98e", "#ec7014", "#ca0020"]
 
 
 function getColor(d) {
-  //console.log(d);
+  // console.log('get color');
   return d > 100 ?
     colores[4] :
     d > 50 ?
@@ -134,6 +101,7 @@ map.append("rect")
   .attr("height", hmap);
 
 var playButton = d3.select("#play-button");
+var queryButton =d3.select("#query-button");
 var moving = false;
 var autoplaystep = 0;
 
@@ -175,14 +143,18 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 
 
+d3.csv("../data/zip_county.csv",function(zipcounty){
+  var zip2fips = {};
+  for (var i = 0; i < zipcounty.length; i++)
+  {
+    zip2fips[zipcounty[i].zip] = zipcounty[i].fip;
+  }
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
     d3.csv("../data/Data_0403.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
-    //    console.log('new timearray');
-    //    console.log(timearry);
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
@@ -190,7 +162,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         //d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
         d3.select("#monthday").html(timearry[timearry.length - 1]);
         var data = data_total_ad
-
+        
         playButton
           .on("click", function() {
             autoplaystep = 0;
@@ -392,6 +364,9 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .append("path")
           .attr("class", "path")
           .attr("d", path)
+          .attr("id",function(d){
+            return "GEOID"+d.properties.GEOID;
+          })
           .style("fill", function(d) {
             return getColor(d.properties.value);
           })
@@ -422,10 +397,76 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
         jsonOutside = cont; // pass json to a global so tableRowClicked has access
 
+        queryButton
+          .on('click', function(){
+            zipcode = document.getElementById('zip').value;
+            geoid = zip2fips[zipcode]
 
+            console.log(geoid);
+            var evt = new MouseEvent("click");
+            if(geoid){
+              d3.select('#GEOID'+geoid)
+              .style("fill", "#000FF")
+              .node().dispatchEvent(evt);
+              
+            }
+            else{
+              console.log('Zipcode not found!')
+            }
+          });
         statesjson = states;
+        
+        function click(d) {
+          var x, y, k;
+          
+          selectID = d3.select(this).attr('id');
+          console.log('SelectID'+selectID);
+          if (d && centered !== d) {
+            d3.select(this)
+            .style('fill','#0000FF');
+            var centroid = path.centroid(d);
+            x = centroid[0];
+            y = centroid[1];
+            k = 15;
+            centered = d;
+          } else {
+            d3.select(this).style("fill", function(d) {
+              return getColor(d.properties.value);
+            })
+            x = width / 2;
+            y = height / 2;
+            k = 1;
+            centered = null;
 
+          }
+        
+          jsonOutside.selectAll("path")
+            .classed(".active", centered && function(d) {
+              return d === centered;
+            });
+          d3 = d3versionV3;
+          jsonOutside.transition()
+            .duration(960)
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            
+            .style("stroke-width", 0.15 / k + "px");
+            
+          statesjson.selectAll("path")
+            .classed(".active", centered && function(d) {
+              return d === centered;
+            });
+          d3 = d3versionV3;
+        
+          statesjson.transition()
+            .duration(960)
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            .style("stroke-width", 3 / k + "px");
+        
+        
+        
+        }
         function mouseover(d) {
+          
           d3.select(this)
             .attr("stroke-width", "1.5px")
             .attr("fill-opacity", "1");
@@ -500,6 +541,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             }
           });
           maxSum(data_cases, index);
+          console.log('drawMap call');
         }
         drawMap(timearry.length - 1);
         maxSum(data_cases, aux);
@@ -573,11 +615,12 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
     });
   });
 });
+});
 
 d3.select("#wrapper").on("touchstart", function() {
   div
     //    .transition()
     //    .duration(100)
-    .on("click", click)
+    // .on("click", click)
     .style("opacity", 0);
 });
