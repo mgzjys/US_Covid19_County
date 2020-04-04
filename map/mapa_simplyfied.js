@@ -419,18 +419,18 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         function click(d) {
           var x, y, k;
 
-          selectID = d3.select(this).attr('id');
-
-
-
-          cont.style("fill", function(d) {
-              return getColor(d.properties.value);
-            })
-
-          console.log('SelectID'+selectID);
           if (d && centered !== d) {
             d3.select(this)
             .style('fill','#0000FF');
+            if(selectID){
+              console.log('OldSelectID'+selectID);
+              d3.select('#'+selectID).style("fill", function(d) {
+                return getColor(d.properties.value);
+              });
+              
+            }
+            selectID = d3.select(this).attr('id');
+            console.log('NewSelectID'+selectID);
             var centroid = path.centroid(d);
             x = centroid[0];
             y = centroid[1];
@@ -439,7 +439,10 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           } else {
             d3.select(this).style("fill", function(d) {
               return getColor(d.properties.value);
-            })
+            });
+            console.log('OldSelectID'+selectID);
+            selectID = null;
+            console.log('NewSelectID'+selectID);
             x = width / 2;
             y = height / 2;
             k = 1;
