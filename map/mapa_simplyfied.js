@@ -17,9 +17,12 @@ trans = 60;
 var height = 330,
 width = 1180,
 trans = 60;
+
+
 function click(d) {
   var x, y, k;
   if (d && centered !== d) {
+    
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
@@ -137,6 +140,7 @@ map.append("rect")
   .attr("height", hmap);
 
 var playButton = d3.select("#play-button");
+var queryButton =d3.select("#query-button");
 var moving = false;
 var autoplaystep = 0;
 
@@ -178,14 +182,18 @@ d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view"
 
 
 
+d3.csv("../data/zip_county.csv",function(zipcounty){
+  var zip2fips = {};
+  for (var i = 0; i < zipcounty.length; i++)
+  {
+    zip2fips[zipcounty[i].zip] = zipcounty[i].fip;
+  }
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
     d3.csv("../data/Data_0403.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
-        console.log('new timearray');
-        console.log(timearry);
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
@@ -193,7 +201,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
         //d3.select("#monthday").html(timearry[timearry.length - 1].substring(5));
         d3.select("#monthday").html(timearry[timearry.length - 1]);
         var data = data_total_ad
-
+        
         playButton
           .on("click", function() {
             autoplaystep = 0;
@@ -395,6 +403,9 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
           .append("path")
           .attr("class", "path")
           .attr("d", path)
+          .attr("id",function(d){
+            return "GEOID"+d.properties.GEOID;
+          })
           .style("fill", function(d) {
             return getColor(d.properties.value);
           })
@@ -425,7 +436,20 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
         jsonOutside = cont; // pass json to a global so tableRowClicked has access
 
+        queryButton
+          .on('click', function(){
+            zipcode = document.getElementById('zip').value;
+            geoid = zip2fips[zipcode]
 
+            console.log(geoid);
+            var evt = new MouseEvent("click");
+            if(geoid){
+              d3.select('#GEOID'+geoid).node().dispatchEvent(evt);
+            }
+            else{
+              console.log('Zipcode not found!')
+            }
+          });
         statesjson = states;
 
         function mouseover(d) {
@@ -575,6 +599,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
       });
     });
   });
+});
 });
 
 d3.select("#wrapper").on("touchstart", function() {

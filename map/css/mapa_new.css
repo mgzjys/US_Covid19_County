@@ -154,6 +154,10 @@ body {
   font-style: normal;
 }
 
+#query-button{
+  
+}
+
 #play-button {
   position: relative;
   top: 10px ;
