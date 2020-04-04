@@ -69,20 +69,23 @@
       <div id="block_container">
         <div id="vis">
           <button id="play-button"></button>
-          
         </div>
         <span class="blinking">
           <div id="buttondescription"></div>
         </span>
-        <button id="query-button"> query</button>
-          <input id="zip" name="zip" type="text" pattern="[0-9]{5}">
+
       </div>
 
 
       <div id="countyData">
-
         <div id="tasa-parados">
           <div id="year"></div>
+              <span class="blinking">
+          <label for="zipcode-search">Search using Zipcode:</label>
+          <input type="search" id="zip" name="q"
+                 aria-label="Search using Zipcode">
+          <button id="query-button">Zoom In/Out</button>
+        </span>
           <div id="monthday"></div>
         </div>
         <div id="maxSum">
