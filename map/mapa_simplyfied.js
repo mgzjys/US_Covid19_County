@@ -496,7 +496,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
 
           }
 
-          if (parseInt(data_cases[d.properties.ID][timearry[aux]])<=0)
+          if (parseFloat(data_cases[d.properties.ID][timearry[aux]])<=0)
           {
             raw_cases = "No data"
           }
