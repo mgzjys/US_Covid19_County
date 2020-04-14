@@ -10,7 +10,7 @@ d3 = d3versionV3;
 var selectID;
 var jsonOutside;
 var active;
-var unassigned =  15662;/////
+var unassigned =  13034;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
