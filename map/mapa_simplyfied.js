@@ -45,8 +45,6 @@ function addComas(n) {
 
 //var colores = d3.schemeReds[5]
 
-//ececec
-
 var colores = ["#D3D3D3", "#fff7bc", "#feb24c", "#fc4e2a", "#bd0026"]
 
 
