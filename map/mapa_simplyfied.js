@@ -45,7 +45,9 @@ function addComas(n) {
 
 //var colores = d3.schemeReds[5]
 
-var colores = ["#ececec", "#c7e9c0", "#74c476", "#238b45", "#00441b"]
+//ececec
+
+var colores = ["#D3D3D3", "#fff7bc", "#feb24c", "#fc4e2a", "#bd0026"]
 
 
 function getColor(d) {
@@ -549,7 +551,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (value) {
               return getColor(parseFloat(value));
             } else {
-              return "#ececec";
+              return colores[0];
             }
           });
           maxSum(data_cases, index);
