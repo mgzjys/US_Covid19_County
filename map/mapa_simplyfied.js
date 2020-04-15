@@ -436,7 +436,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             var centroid = path.centroid(d);
             x = centroid[0];
             y = centroid[1];
-            k = 15;
+            k = 12;
             centered = d;
           } else {
             d3.select(this).style("fill", function(d) {
