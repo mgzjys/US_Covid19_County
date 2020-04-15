@@ -50,11 +50,11 @@ var colores = ["#ececec", "#c7e9c0", "#74c476", "#238b45", "#00441b"]
 
 function getColor(d) {
   // console.log('get color');
-  return d > 300 ?
+  return d > 450 ?
     colores[4] :
-    d > 100 ?
+    d > 150 ?
     colores[3] :
-    d > 30 ?
+    d > 50 ?
     colores[2] :
     d > 0 ?
     colores[1] :
