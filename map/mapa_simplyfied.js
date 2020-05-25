@@ -10,13 +10,13 @@ d3 = d3versionV3;
 //0423:21974 0424:8978 0425:9509 0426:9953 0427:10044 0428:9815 0429:9722
 //0430:9520 0501:10132 0502:10773 0503:11451 0504:11366 0505:11434 0506:11272
 //0507:11831 0508:12163 0509:12278 0510:13074 0511:11657 0512:12237 0513:12169
-//0514:12756 0515:13137 0516:13964 0517:14550 0518:15801
-
+//0514:12756 0515:13137 0516:13964 0517:14550 0518:15801 0519:15919 0520:15715
+//0521:16135 0522:16490 0523:16942
 
 var selectID;
 var jsonOutside;
 var active;
-var unassigned =  15919;/////
+var unassigned =  17428;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -131,7 +131,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; click the blue pol
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-05-20 (Dataset from CSSEGISandData)");
+d3.select("#datainfor").html("Data updated time: 2020-05-25 (Dataset from CSSEGISandData)");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -159,7 +159,7 @@ d3.csv("../data/zip_county.csv",function(zipcounty){
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0519.csv", function(data_cases) {
+    d3.csv("../data/Data_0524.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         var aux = timearry.length - 1;
