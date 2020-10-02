@@ -162,7 +162,7 @@ d3.csv("../data/zip_county.csv",function(zipcounty){
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_0927.csv", function(data_cases) {
+    d3.csv("../data/Data_1001.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         var aux = timearry.length - 1;
