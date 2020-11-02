@@ -6,7 +6,7 @@ d3 = d3versionV3;
 var selectID;
 var jsonOutside;
 var active;
-var unassigned =  163680;/////
+var unassigned =  164666;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -35,11 +35,11 @@ var colores = ["#D3D3D3", "#fff7bc", "#feb24c", "#fc4e2a", "#bd0026"]
 
 function getColor(d) {
   // console.log('get color');
-  return d > 2500 ?
+  return d > 3500 ?
     colores[4] :
-    d > 1000 ?
+    d > 1500 ?
     colores[3] :
-    d > 100 ?
+    d > 500 ?
     colores[2] :
     d > 0 ?
     colores[1] :
@@ -100,7 +100,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; click the blue pol
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-11-01 (Dataset from CSSEGISandData)");
+d3.select("#datainfor").html("Data updated time: 2020-11-02 (Dataset from CSSEGISandData)");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -128,7 +128,7 @@ d3.csv("../data/zip_county.csv",function(zipcounty){
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_1031.csv", function(data_cases) {
+    d3.csv("../data/Data_1101.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         var aux = timearry.length - 1;
@@ -557,7 +557,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(data[j][timearry[index]]*scalefactor) > 1000) {
+            if (parseFloat(data[j][timearry[index]]*scalefactor) > 3000) {
               seriouscounty = seriouscounty + 1;
 
             }
@@ -585,7 +585,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 1000 positive cases per 100,000 county population." +
+              countyMax + "  counties in the US have more than 3000 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3
