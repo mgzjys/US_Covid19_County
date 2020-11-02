@@ -2,19 +2,6 @@
  * Date: 2020 March
  */
 d3 = d3versionV3;
-//0321:735 0322: 604 0323: 1356  0324: 1927 0325:1927 0326：2903
-//0327:3711 0328:4549 0329:5361 0330:6644 0331:6333 0401:7944 0402:8302
-//0403:8200 0404:7368 0405:7321 0406:7537 0407:6371 0408:9623 0409:9306
-//0410:9878 0411:10550 0412:10745 0413:12254 0414: 13327 0415: 11973
-//0416: 13073 0417:12931 0419:13059 0420:19042 0421:22555 0422:21615
-//0423:21974 0424:8978 0425:9509 0426:9953 0427:10044 0428:9815 0429:9722
-//0430:9520 0501:10132 0502:10773 0503:11451 0504:11366 0505:11434 0506:11272
-//0507:11831 0508:12163 0509:12278 0510:13074 0511:11657 0512:12237 0513:12169
-//0514:12756 0515:13137 0516:13964 0517:14550 0518:15801 0519:15919 0520:15715
-//0521:16135 0522:16490 0523:16942 0524:17428 0525:17177 0526:16908 0527:17237
-//0528:16826 0529:17300 0530:18081 0531:18929 0601:19575 0602: 20183 0603:20236
-//0604:21029 0605:21597 0606:22295 0607:28734 0608:27935 0609:22514 0610:22691
-
 
 var selectID;
 var jsonOutside;
@@ -42,17 +29,6 @@ function addComas(n) {
 }
 
 
-//const zoom = d3.zoom()
-//  .scaleExtent([1, 8])
-//  .on('zoom', zoomed);
-
-//function zoomed() {
-//  g
-//    .selectAll('path') // To prevent stroke width from scaling
-//    .attr('transform', d3.event.transform);
-//}
-
-//var colores = d3.schemeReds[5]
 
 var colores = ["#D3D3D3", "#fff7bc", "#feb24c", "#fc4e2a", "#bd0026"]
 
@@ -118,16 +94,6 @@ var autoplaystep = 0;
 
 
 
-//var projectionCan = d3.geo
-//  .mercator()
-//  .translate([810, 1350])
-//  .scale(2500);
-//var pathCan = d3.geo.path().projection(projectionCan);
-//var mapCan = d3
-//  .select("#canarias")
-//  .append("svg")
-//  .attr("width", wCan)
-//  .attr("height", hCan);
 d3.select("#maptitle").html("US Covid-19 County Timeline");
 
 d3.select("#mapsubtitle").html("(one-click on map to zoom in; click the blue polygon to zoom out)");
