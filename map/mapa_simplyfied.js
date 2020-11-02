@@ -557,7 +557,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(data[j][timearry[index]]*scalefactor) > 3000) {
+            if (parseFloat(data[j][timearry[index]]*scalefactor) > 3500) {
               seriouscounty = seriouscounty + 1;
 
             }
@@ -585,7 +585,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 3000 positive cases per 100,000 county population." +
+              countyMax + "  counties in the US have more than 3500 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3
