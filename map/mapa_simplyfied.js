@@ -6,7 +6,7 @@ d3 = d3versionV3;
 var selectID;
 var jsonOutside;
 var active;
-var unassigned =  153340;/////
+var unassigned =  186202;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -100,7 +100,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; click the blue pol
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2020-11-11 (Dataset from CSSEGISandData)");
+d3.select("#datainfor").html("Data updated time: 2020-11-23 (Dataset from CSSEGISandData)");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -128,7 +128,7 @@ d3.csv("../data/zip_county.csv",function(zipcounty){
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data_1110.csv", function(data_cases) {
+    d3.csv("../data/Data_1122.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
         timearry = d3.keys(data_total_ad[0]).slice(3, -5);
         var aux = timearry.length - 1;
