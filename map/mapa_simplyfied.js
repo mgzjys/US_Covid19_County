@@ -6,7 +6,7 @@ d3 = d3versionV3;
 var selectID;
 var jsonOutside;
 var active;
-var unassigned =  334058;/////
+var unassigned =  0;/////
 var scalefactor = 100000;
 var height = 330,
 width = 1180,
@@ -15,6 +15,31 @@ trans = 60;
 var height = 330,
 width = 1180,
 trans = 60;
+
+
+
+var xxx=0
+function readFile(file)
+{
+    var f = new XMLHttpRequest();
+    f.open("GET", file, false);
+    f.onreadystatechange = function ()
+    {
+        if(f.readyState === 4)
+        {
+            if(f.status === 200 || f.status == 0)
+            {
+              unassigned= parseInt(f.responseText);
+              //  alert(res); //to see if contents are read
+            }
+        }
+    }
+    f.send(null);
+}
+
+readFile('../data/unassgin.txt')
+
+//console.log(unassigned)
 
 
 
@@ -93,6 +118,10 @@ var moving = false;
 var autoplaystep = 0;
 
 
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var dateTime = date+' ';
+
 
 d3.select("#maptitle").html("US Covid-19 County Timeline");
 
@@ -100,7 +129,7 @@ d3.select("#mapsubtitle").html("(one-click on map to zoom in; click the blue pol
 
 d3.select("#creditinfor").html("Created by GISers from CGIS, UMD");
 
-d3.select("#datainfor").html("Data updated time: 2021-01-08 (Dataset from CSSEGISandData)");
+d3.select("#datainfor").html("Data updated time: "+ dateTime+ " (Dataset from CSSEGISandData)");
 
 d3.select("#contributions").html("Contribution: Visualization by Yao Li and Zheng Liu. Data collection by Junchuan Fan, Hai Lan, Yao Li, Jeff Sauer, Zhiyue Xia,Guiming Zhu from CGIS, University of Maryland, College Park.");
 
@@ -110,9 +139,7 @@ d3.select("#legendname").html("Positive cases per 100,000 county population");
 
 d3.select("#buttondescription").html("Click to see a recent 14-day dynamic view");
 
-
-
-
+d3.select("#div.final").html("Click to see a recent 14-day dynamic view");
 
 
 
@@ -128,9 +155,9 @@ d3.csv("../data/zip_county.csv",function(zipcounty){
 
 d3.csv("../data/total_ad.csv", function(data_total_ad) {
   d3.json("../data/states.json", function(states_json) {
-    d3.csv("../data/Data21_0107.csv", function(data_cases) {
+    d3.csv("../data/Data_cases.csv", function(data_cases) {
       d3.json("../data/Data_geo.json", function(json) {
-        timearry = d3.keys(data_total_ad[0]).slice(3, -5);
+        timearry = d3.keys(data_total_ad[0]).slice(22, );
         var aux = timearry.length - 1;
         var width_slider = 1200;
         var height_slider = 50;
