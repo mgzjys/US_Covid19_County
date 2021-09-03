@@ -60,11 +60,11 @@ var colores = ["#D3D3D3", "#fff7bc", "#feb24c", "#fc4e2a", "#bd0026"]
 
 function getColor(d) {
   // console.log('get color');
-  return d > 8000 ?
+  return d > 15000 ?
     colores[4] :
-    d > 4000 ?
+    d > 10000 ?
     colores[3] :
-    d > 1000 ?
+    d > 5000 ?
     colores[2] :
     d > 0 ?
     colores[1] :
@@ -584,7 +584,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
             if (parseFloat(datos[j]) > 0) {
               posicounty = posicounty + 1;
             }
-            if (parseFloat(data[j][timearry[index]]*scalefactor) > 3500) {
+            if (parseFloat(data[j][timearry[index]]*scalefactor) > 15000) {
               seriouscounty = seriouscounty + 1;
 
             }
@@ -612,7 +612,7 @@ d3.csv("../data/total_ad.csv", function(data_total_ad) {
               //  addComas(max_sum[1]) +
               "<br>" +
               "<span id='county'>" +
-              countyMax + "  counties in the US have more than 3500 positive cases per 100,000 county population." +
+              countyMax + "  counties in the US have more than 15000 positive cases per 100,000 county population." +
               "</span>"
             );
           var nombrecountyPoNum = d3
